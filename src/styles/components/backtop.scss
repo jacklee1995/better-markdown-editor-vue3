@@ -1,0 +1,71 @@
+@import '../variables';
+@import '../mixins';
+
+// 回到顶部组件样式
+.backtop {
+  position: fixed;
+  right: $spacing-large;
+  bottom: $spacing-large;
+  z-index: $index-popper;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  color: $color-white;
+  background-color: $color-primary;
+  border-radius: 50%;
+  box-shadow: $box-shadow-base;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity $transition-duration-fast,
+    transform $transition-duration-fast;
+
+  &:hover {
+    background-color: darken($color-primary, 10%);
+  }
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-10px);
+  }
+
+  // 图标样式
+  .icon {
+    transition: transform $transition-duration-fast;
+  }
+
+  // 显示时图标动画
+  &.show .icon {
+    transform: rotate(-180deg);
+  }
+
+  // 暗色主题样式
+  .theme-dark & {
+    color: $color-black;
+    background-color: $color-white;
+
+    &:hover {
+      background-color: darken($color-white, 10%);
+    }
+  }
+
+  // 响应式样式
+  @include media-breakpoint-down(md) {
+    right: $spacing-base;
+    bottom: $spacing-base;
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  @include media-breakpoint-down(sm) {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+}

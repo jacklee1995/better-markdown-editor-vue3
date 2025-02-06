@@ -1,0 +1,141 @@
+@import '../variables';
+@import '../mixins';
+
+// 头部样式
+.header {
+  height: $header-height;
+  background-color: $header-background-color;
+  color: $header-text-color;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 $spacing-large;
+  box-shadow: $header-box-shadow;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $header-z-index;
+
+  // Logo 样式
+  &-logo {
+    font-size: $header-logo-font-size;
+    font-weight: bold;
+
+    a {
+      color: $header-logo-color;
+      text-decoration: none;
+      transition: color $transition-duration-base;
+
+      &:hover {
+        color: $header-logo-hover-color;
+      }
+    }
+  }
+
+  // 导航样式
+  &-nav {
+    display: flex;
+    align-items: center;
+
+    ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        margin-left: $spacing-large;
+
+        a {
+          color: $header-nav-color;
+          text-decoration: none;
+          transition: color $transition-duration-base;
+
+          &:hover {
+            color: $header-nav-hover-color;
+          }
+
+          &.active {
+            color: $header-nav-active-color;
+          }
+        }
+      }
+    }
+  }
+
+  // 工具栏样式
+  &-toolbar {
+    display: flex;
+    align-items: center;
+
+    .toolbar-item {
+      margin-left: $spacing-base;
+      cursor: pointer;
+      transition: color $transition-duration-base;
+
+      &:hover {
+        color: $header-toolbar-hover-color;
+      }
+    }
+  }
+
+  // 用户信息样式
+  &-user {
+    display: flex;
+    align-items: center;
+    margin-left: $spacing-large;
+
+    .user-avatar {
+      width: $header-user-avatar-size;
+      height: $header-user-avatar-size;
+      border-radius: 50%;
+      margin-right: $spacing-small;
+    }
+
+    .user-name {
+      font-size: $header-user-font-size;
+      font-weight: bold;
+    }
+
+    .user-dropdown {
+      margin-left: $spacing-small;
+      cursor: pointer;
+      transition: transform $transition-duration-base;
+
+      &:hover {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  // 响应式样式
+  @include media-breakpoint-down(md) {
+    padding: 0 $spacing-base;
+
+    &-logo {
+      font-size: $header-logo-font-size-sm;
+    }
+
+    &-nav {
+      display: none;
+    }
+
+    &-toolbar {
+      margin-left: auto;
+    }
+
+    &-user {
+      margin-left: $spacing-base;
+
+      .user-avatar {
+        width: $header-user-avatar-size-sm;
+        height: $header-user-avatar-size-sm;
+      }
+
+      .user-name {
+        display: none;
+      }
+    }
+  }
+}

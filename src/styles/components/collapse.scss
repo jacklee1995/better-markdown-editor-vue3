@@ -1,0 +1,125 @@
+@import '../variables';
+@import '../mixins';
+
+// 折叠面板样式
+.collapse {
+  border: $collapse-border-width solid $collapse-border-color;
+  border-radius: $collapse-border-radius;
+
+  // 折叠面板项
+  &-item {
+    border-bottom: $collapse-border-width solid $collapse-border-color;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  // 折叠面板头部
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $collapse-header-padding;
+    color: $collapse-header-color;
+    font-size: $collapse-header-font-size;
+    font-weight: $collapse-header-font-weight;
+    background-color: $collapse-header-background-color;
+    cursor: pointer;
+    transition: background-color $transition-duration-base;
+
+    &:hover {
+      background-color: $collapse-header-hover-background-color;
+    }
+
+    // 折叠图标
+    .arrow {
+      margin-left: $collapse-arrow-margin-left;
+      transition: transform $transition-duration-base;
+
+      &.active {
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  // 折叠面板内容
+  &-content {
+    padding: $collapse-content-padding;
+    color: $collapse-content-color;
+    font-size: $collapse-content-font-size;
+    background-color: $collapse-content-background-color;
+
+    &.active {
+      display: block;
+    }
+
+    &:not(.active) {
+      display: none;
+    }
+  }
+
+  // 手风琴模式
+  &-accordion {
+    .collapse-item {
+      &:not(:first-child) {
+        .collapse-header {
+          border-top: $collapse-border-width solid $collapse-border-color;
+        }
+      }
+
+      &:not(:last-child) {
+        .collapse-content {
+          border-bottom: $collapse-border-width solid $collapse-border-color;
+        }
+      }
+    }
+  }
+
+  // 简洁模式
+  &-simple {
+    border: none;
+
+    .collapse-item {
+      border: none;
+      margin-bottom: $collapse-simple-item-margin-bottom;
+    }
+
+    .collapse-header {
+      border: none;
+      background-color: transparent;
+      padding-left: 0;
+      padding-right: 0;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+
+    .collapse-content {
+      border: none;
+      padding: $collapse-simple-content-padding;
+    }
+  }
+
+  // 自定义图标
+  &-custom-icon {
+    .collapse-header {
+      .arrow {
+        display: none;
+      }
+    }
+  }
+
+  // 禁用状态
+  &-disabled {
+    .collapse-header {
+      color: $collapse-disabled-color;
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: $collapse-header-background-color;
+      }
+    }
+  }
+}

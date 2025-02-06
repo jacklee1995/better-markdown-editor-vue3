@@ -1,0 +1,132 @@
+@import '../variables';
+@import '../mixins';
+
+// 下拉菜单样式
+.dropdown {
+  position: relative;
+  display: inline-block;
+
+  // 下拉菜单触发器
+  &-trigger {
+    cursor: pointer;
+  }
+
+  // 下拉菜单内容
+  &-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: $zindex-dropdown;
+    display: none;
+    min-width: $dropdown-min-width;
+    padding: $dropdown-padding-y 0;
+    margin: $dropdown-spacer 0 0; // 覆盖默认的外边距
+    font-size: $font-size-base;
+    color: $dropdown-color;
+    text-align: left;
+    list-style: none;
+    background-color: $dropdown-bg;
+    background-clip: padding-box;
+    border: $dropdown-border-width solid $dropdown-border-color;
+    border-radius: $dropdown-border-radius;
+    box-shadow: $dropdown-box-shadow;
+
+    // 显示下拉菜单
+    &.show {
+      display: block;
+    }
+  }
+
+  // 下拉菜单项
+  &-item {
+    display: block;
+    width: 100%;
+    padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+    clear: both;
+    font-weight: $font-weight-normal;
+    color: $dropdown-link-color;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    transition: $dropdown-transition;
+
+    // 悬停状态
+    &:hover,
+    &:focus {
+      color: $dropdown-link-hover-color;
+      text-decoration: none;
+      background-color: $dropdown-link-hover-bg;
+    }
+
+    // 激活状态
+    &.active,
+    &:active {
+      color: $dropdown-link-active-color;
+      text-decoration: none;
+      background-color: $dropdown-link-active-bg;
+    }
+
+    // 禁用状态
+    &.disabled,
+    &:disabled {
+      color: $dropdown-link-disabled-color;
+      pointer-events: none;
+      background-color: transparent;
+    }
+  }
+
+  // 下拉菜单分隔线
+  &-divider {
+    height: 0;
+    margin: $dropdown-divider-margin-y 0;
+    overflow: hidden;
+    border-top: 1px solid $dropdown-divider-bg;
+  }
+
+  // 下拉菜单头部
+  &-header {
+    display: block;
+    padding: $dropdown-header-padding;
+    margin-bottom: 0; // 重置默认的外边距
+    font-size: $font-size-sm;
+    color: $dropdown-header-color;
+    white-space: nowrap;
+  }
+
+  // 下拉菜单文本
+  &-text {
+    display: block;
+    padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+    color: $dropdown-link-color;
+  }
+
+  // 下拉菜单方向
+  &-menu-right {
+    right: 0;
+    left: auto;
+  }
+
+  &-menu-left {
+    right: auto;
+    left: 0;
+  }
+
+  // 响应式下拉菜单
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+      &#{$infix}-menu-right {
+        right: 0;
+        left: auto;
+      }
+
+      &#{$infix}-menu-left {
+        right: auto;
+        left: 0;
+      }
+    }
+  }
+}

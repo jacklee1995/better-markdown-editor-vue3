@@ -1,0 +1,156 @@
+@import '../variables';
+@import '../mixins';
+
+// 侧边栏样式
+.sidebar {
+  width: $sidebar-width;
+  height: 100%;
+  background-color: $sidebar-background-color;
+  color: $sidebar-text-color;
+  transition: width $transition-duration-base;
+  overflow: hidden;
+
+  // 侧边栏头部
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: $sidebar-header-height;
+    padding: 0 $spacing-base;
+    border-bottom: 1px solid $sidebar-header-border-color;
+
+    .logo {
+      font-size: $sidebar-logo-font-size;
+      font-weight: bold;
+    }
+
+    .toggle-btn {
+      cursor: pointer;
+      transition: transform $transition-duration-base;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  // 侧边栏菜单
+  &-menu {
+    height: calc(100% - #{$sidebar-header-height});
+    overflow-y: auto;
+
+    .menu-item {
+      display: flex;
+      align-items: center;
+      height: $sidebar-menu-item-height;
+      padding: 0 $spacing-base;
+      cursor: pointer;
+      transition: background-color $transition-duration-base;
+
+      &:hover {
+        background-color: $sidebar-menu-item-hover-background-color;
+      }
+
+      &.active {
+        background-color: $sidebar-menu-item-active-background-color;
+        color: $sidebar-menu-item-active-text-color;
+      }
+
+      .icon {
+        margin-right: $spacing-small;
+        font-size: $sidebar-menu-item-icon-size;
+      }
+
+      .text {
+        flex: 1;
+        @include text-overflow;
+      }
+
+      .arrow {
+        transition: transform $transition-duration-base;
+      }
+
+      &.open {
+        .arrow {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    .submenu {
+      background-color: $sidebar-submenu-background-color;
+      overflow: hidden;
+      transition: height $transition-duration-base;
+
+      .menu-item {
+        padding-left: $spacing-large;
+      }
+    }
+  }
+
+  // 收起状态
+  &.collapsed {
+    width: $sidebar-collapsed-width;
+
+    .logo {
+      display: none;
+    }
+
+    .menu-item {
+      justify-content: center;
+      padding: 0;
+
+      .icon {
+        margin-right: 0;
+      }
+
+      .text,
+      .arrow {
+        display: none;
+      }
+    }
+
+    .submenu {
+      display: none;
+    }
+  }
+
+  // 暗色主题
+  &.dark {
+    background-color: $sidebar-dark-background-color;
+    color: $sidebar-dark-text-color;
+
+    .sidebar-header {
+      border-bottom-color: $sidebar-dark-header-border-color;
+    }
+
+    .menu-item {
+      &:hover {
+        background-color: $sidebar-dark-menu-item-hover-background-color;
+      }
+
+      &.active {
+        background-color: $sidebar-dark-menu-item-active-background-color;
+        color: $sidebar-dark-menu-item-active-text-color;
+      }
+    }
+
+    .submenu {
+      background-color: $sidebar-dark-submenu-background-color;
+    }
+  }
+
+  // 响应式
+  @include media-breakpoint-down(lg) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: $index-sidebar;
+    transform: translateX(-100%);
+    transition: transform $transition-duration-base;
+
+    &.open {
+      transform: translateX(0);
+    }
+  }
+}

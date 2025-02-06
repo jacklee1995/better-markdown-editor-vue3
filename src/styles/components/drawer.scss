@@ -1,0 +1,168 @@
+@import '../variables';
+@import '../mixins';
+
+// 抽屉组件样式
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $index-popper;
+  overflow: hidden;
+  outline: 0;
+
+  // 抽屉遮罩层
+  &-mask {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: $index-normal;
+    background-color: $drawer-mask-background-color;
+    opacity: 0;
+    transition: opacity $transition-duration-fast ease-in-out;
+
+    &.active {
+      opacity: 1;
+    }
+  }
+
+  // 抽屉内容区
+  &-content {
+    position: absolute;
+    z-index: $index-popper;
+    background-color: $drawer-content-background-color;
+    border-radius: $drawer-content-border-radius;
+    box-shadow: $drawer-content-box-shadow;
+    transition: transform $transition-duration-fast ease-in-out;
+
+    // 抽屉大小
+    &.small {
+      width: $drawer-size-small;
+    }
+
+    &.medium {
+      width: $drawer-size-medium;
+    }
+
+    &.large {
+      width: $drawer-size-large;
+    }
+
+    // 抽屉位置
+    &.top {
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -100%);
+
+      &.active {
+        transform: translate(-50%, 0);
+      }
+    }
+
+    &.right {
+      top: 0;
+      right: 0;
+      height: 100%;
+      transform: translateX(100%);
+
+      &.active {
+        transform: translateX(0);
+      }
+    }
+
+    &.bottom {
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 100%);
+
+      &.active {
+        transform: translate(-50%, 0);
+      }
+    }
+
+    &.left {
+      top: 0;
+      left: 0;
+      height: 100%;
+      transform: translateX(-100%);
+
+      &.active {
+        transform: translateX(0);
+      }
+    }
+  }
+
+  // 抽屉头部
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $drawer-header-padding;
+    border-bottom: 1px solid $drawer-header-border-color;
+
+    .title {
+      margin: 0;
+      font-size: $drawer-header-font-size;
+      font-weight: $drawer-header-font-weight;
+      color: $drawer-header-color;
+    }
+
+    .close {
+      cursor: pointer;
+      font-size: $drawer-header-close-size;
+      color: $drawer-header-close-color;
+      transition: color $transition-duration-fast;
+
+      &:hover {
+        color: $drawer-header-close-hover-color;
+      }
+    }
+  }
+
+  // 抽屉主体
+  &-body {
+    padding: $drawer-body-padding;
+    overflow: auto;
+  }
+
+  // 抽屉底部
+  &-footer {
+    padding: $drawer-footer-padding;
+    border-top: 1px solid $drawer-footer-border-color;
+    text-align: right;
+  }
+
+  // 暗色主题
+  &.dark {
+    .drawer-mask {
+      background-color: $drawer-dark-mask-background-color;
+    }
+
+    .drawer-content {
+      background-color: $drawer-dark-content-background-color;
+    }
+
+    .drawer-header {
+      border-bottom-color: $drawer-dark-header-border-color;
+
+      .title {
+        color: $drawer-dark-header-color;
+      }
+
+      .close {
+        color: $drawer-dark-header-close-color;
+
+        &:hover {
+          color: $drawer-dark-header-close-hover-color;
+        }
+      }
+    }
+
+    .drawer-footer {
+      border-top-color: $drawer-dark-footer-border-color;
+    }
+  }
+}

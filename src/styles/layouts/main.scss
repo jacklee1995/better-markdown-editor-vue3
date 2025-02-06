@@ -1,0 +1,85 @@
+@import '../variables';
+@import '../mixins';
+
+// 主体样式
+.main {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+
+  // 编辑器样式
+  &-editor {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-right: 1px solid $border-color-base;
+
+    // 工具栏样式
+    &-toolbar {
+      height: $toolbar-height;
+      display: flex;
+      align-items: center;
+      padding: 0 $spacing-small;
+      border-bottom: 1px solid $border-color-base;
+
+      .toolbar-item {
+        margin-right: $spacing-small;
+        cursor: pointer;
+        color: $text-color-regular;
+        transition: color $transition-duration-base;
+
+        &:hover {
+          color: $color-primary;
+        }
+
+        &.active {
+          color: $color-primary;
+        }
+      }
+    }
+
+    // 编辑区样式
+    &-content {
+      flex: 1;
+      overflow: auto;
+      padding: $spacing-base;
+
+      .editor-textarea {
+        width: 100%;
+        height: 100%;
+        border: none;
+        resize: none;
+        outline: none;
+        font-size: $font-size-base;
+        line-height: $line-height-base;
+        color: $text-color-primary;
+        background-color: transparent;
+      }
+    }
+  }
+
+  // 预览区样式
+  &-preview {
+    flex: 1;
+    overflow: auto;
+    padding: $spacing-base;
+    background-color: $background-color-base;
+
+    .preview-content {
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+    }
+  }
+
+  // 响应式布局
+  @include media-breakpoint-down(md) {
+    flex-direction: column;
+
+    &-editor {
+      border-right: none;
+      border-bottom: 1px solid $border-color-base;
+    }
+  }
+}

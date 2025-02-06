@@ -1,0 +1,203 @@
+@import '../variables';
+@import '../mixins';
+
+// 输入框组件样式
+.input {
+  display: inline-block;
+  width: 100%;
+  height: $input-height;
+  padding: $input-padding-vertical $input-padding-horizontal;
+  font-family: $input-font-family;
+  font-size: $input-font-size;
+  font-weight: $input-font-weight;
+  line-height: $input-line-height;
+  color: $input-color;
+  background-color: $input-bg;
+  background-clip: padding-box;
+  border: $input-border-width solid $input-border-color;
+  border-radius: $input-border-radius;
+  box-shadow: $input-box-shadow;
+  transition: $input-transition;
+
+  &::placeholder {
+    color: $input-placeholder-color;
+    // 覆盖 Firefox 中的默认不透明度
+    opacity: 1;
+  }
+
+  // 禁用状态
+  &:disabled,
+  &[readonly] {
+    background-color: $input-disabled-bg;
+    border-color: $input-disabled-border-color;
+    opacity: 1;
+  }
+
+  // 聚焦状态
+  &:focus {
+    color: $input-focus-color;
+    background-color: $input-focus-bg;
+    border-color: $input-focus-border-color;
+    outline: 0;
+    box-shadow: $input-focus-box-shadow;
+  }
+
+  // 错误状态
+  &.is-error {
+    border-color: $danger-color;
+
+    &:focus {
+      border-color: $danger-color;
+      box-shadow: 0 0 0 $input-focus-width rgba($danger-color, 0.25);
+    }
+  }
+
+  // 成功状态
+  &.is-success {
+    border-color: $success-color;
+
+    &:focus {
+      border-color: $success-color;
+      box-shadow: 0 0 0 $input-focus-width rgba($success-color, 0.25);
+    }
+  }
+
+  // 警告状态
+  &.is-warning {
+    border-color: $warning-color;
+
+    &:focus {
+      border-color: $warning-color;
+      box-shadow: 0 0 0 $input-focus-width rgba($warning-color, 0.25);
+    }
+  }
+
+  // 不同尺寸
+  &.input-lg {
+    height: $input-height-lg;
+    padding: $input-padding-vertical-lg $input-padding-horizontal-lg;
+    font-size: $input-font-size-lg;
+    line-height: $input-line-height-lg;
+    border-radius: $input-border-radius-lg;
+  }
+
+  &.input-sm {
+    height: $input-height-sm;
+    padding: $input-padding-vertical-sm $input-padding-horizontal-sm;
+    font-size: $input-font-size-sm;
+    line-height: $input-line-height-sm;
+    border-radius: $input-border-radius-sm;
+  }
+
+  // 前置/后置标签
+  .input-group {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+
+    > .input {
+      position: relative;
+      flex: 1 1 auto;
+      width: 1%;
+      min-width: 0;
+      margin-bottom: 0;
+
+      + .input {
+        margin-left: -$input-border-width;
+      }
+    }
+
+    > .input:focus {
+      z-index: 3;
+    }
+
+    // 前置标签
+    .input-group-prepend {
+      display: flex;
+      align-items: center;
+      padding: $input-padding-vertical $input-padding-horizontal;
+      font-size: $input-font-size;
+      font-weight: $font-weight-normal;
+      line-height: $input-line-height;
+      color: $input-group-addon-color;
+      text-align: center;
+      white-space: nowrap;
+      background-color: $input-group-addon-bg;
+      border: $input-border-width solid $input-group-addon-border-color;
+      border-radius: $input-border-radius;
+      margin-right: -$input-border-width;
+    }
+
+    // 后置标签
+    .input-group-append {
+      display: flex;
+      align-items: center;
+      padding: $input-padding-vertical $input-padding-horizontal;
+      font-size: $input-font-size;
+      font-weight: $font-weight-normal;
+      line-height: $input-line-height;
+      color: $input-group-addon-color;
+      text-align: center;
+      white-space: nowrap;
+      background-color: $input-group-addon-bg;
+      border: $input-border-width solid $input-group-addon-border-color;
+      border-radius: $input-border-radius;
+      margin-left: -$input-border-width;
+    }
+  }
+
+  // 带图标的输入框
+  .input-with-icon {
+    position: relative;
+
+    .input {
+      padding-right: $input-height;
+    }
+
+    .icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: $input-height;
+      height: $input-height;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: $input-icon-color;
+      pointer-events: none;
+    }
+  }
+
+  // 带清除按钮的输入框
+  .input-with-clear {
+    position: relative;
+
+    .input {
+      padding-right: $input-height;
+    }
+
+    .clear {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: $input-height;
+      height: $input-height;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: $input-clear-color;
+      cursor: pointer;
+      opacity: 0;
+      transition: $input-transition;
+
+      &:hover {
+        color: $input-clear-hover-color;
+      }
+    }
+
+    &:hover .clear {
+      opacity: 1;
+    }
+  }
+}

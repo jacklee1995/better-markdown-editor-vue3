@@ -1,0 +1,203 @@
+@use 'sass:map';
+
+// 主题配置
+$themes: (
+  light: (
+    // 背景色
+    bg-color: #fff,
+    // 文本颜色
+    text-color: #333,
+    // 边框颜色
+    border-color: #ddd,
+    // 主色调
+    primary-color: #007bff,
+    // 次要色调
+    secondary-color: #6c757d,
+    // 成功色调
+    success-color: #28a745,
+    // 警告色调
+    warning-color: #ffc107,
+    // 危险色调
+    danger-color: #dc3545,
+    // 信息色调
+    info-color: #17a2b8,
+  ),
+  dark: (
+    bg-color: #333,
+    text-color: #fff,
+    border-color: #444,
+    primary-color: #007bff,
+    secondary-color: #6c757d,
+    success-color: #28a745,
+    warning-color: #ffc107,
+    danger-color: #dc3545,
+    info-color: #17a2b8,
+  ),
+);
+
+// 获取主题变量
+@function themed($key) {
+  @return map.get($theme-map, $key);
+}
+
+// 主题样式
+@mixin theme($theme) {
+  $theme-map: map.get($themes, $theme) !global;
+
+  // 背景色
+  .bg-color {
+    background-color: themed('bg-color');
+  }
+
+  // 文本颜色
+  .text-color {
+    color: themed('text-color');
+  }
+
+  // 边框颜色
+  .border-color {
+    border-color: themed('border-color');
+  }
+
+  // 主色调
+  .primary-color {
+    color: themed('primary-color');
+  }
+
+  // 次要色调
+  .secondary-color {
+    color: themed('secondary-color');
+  }
+
+  // 成功色调
+  .success-color {
+    color: themed('success-color');
+  }
+
+  // 警告色调
+  .warning-color {
+    color: themed('warning-color');
+  }
+
+  // 危险色调
+  .danger-color {
+    color: themed('danger-color');
+  }
+
+  // 信息色调
+  .info-color {
+    color: themed('info-color');
+  }
+
+  // 主色调背景
+  .bg-primary {
+    background-color: themed('primary-color');
+  }
+
+  // 次要色调背景
+  .bg-secondary {
+    background-color: themed('secondary-color');
+  }
+
+  // 成功色调背景
+  .bg-success {
+    background-color: themed('success-color');
+  }
+
+  // 警告色调背景
+  .bg-warning {
+    background-color: themed('warning-color');
+  }
+
+  // 危险色调背景
+  .bg-danger {
+    background-color: themed('danger-color');
+  }
+
+  // 信息色调背景
+  .bg-info {
+    background-color: themed('info-color');
+  }
+
+  // 按钮样式
+  .btn {
+    // 主色调按钮
+    &-primary {
+      background-color: themed('primary-color');
+      border-color: themed('primary-color');
+      color: #fff;
+
+      &:hover {
+        background-color: darken(themed('primary-color'), 10%);
+        border-color: darken(themed('primary-color'), 10%);
+      }
+    }
+
+    // 次要色调按钮
+    &-secondary {
+      background-color: themed('secondary-color');
+      border-color: themed('secondary-color');
+      color: #fff;
+
+      &:hover {
+        background-color: darken(themed('secondary-color'), 10%);
+        border-color: darken(themed('secondary-color'), 10%);
+      }
+    }
+
+    // 成功色调按钮
+    &-success {
+      background-color: themed('success-color');
+      border-color: themed('success-color');
+      color: #fff;
+
+      &:hover {
+        background-color: darken(themed('success-color'), 10%);
+        border-color: darken(themed('success-color'), 10%);
+      }
+    }
+
+    // 警告色调按钮
+    &-warning {
+      background-color: themed('warning-color');
+      border-color: themed('warning-color');
+      color: #fff;
+
+      &:hover {
+        background-color: darken(themed('warning-color'), 10%);
+        border-color: darken(themed('warning-color'), 10%);
+      }
+    }
+
+    // 危险色调按钮
+    &-danger {
+      background-color: themed('danger-color');
+      border-color: themed('danger-color');
+      color: #fff;
+
+      &:hover {
+        background-color: darken(themed('danger-color'), 10%);
+        border-color: darken(themed('danger-color'), 10%);
+      }
+    }
+
+    // 信息色调按钮
+    &-info {
+      background-color: themed('info-color');
+      border-color: themed('info-color');
+      color: #fff;
+
+      &:hover {
+        background-color: darken(themed('info-color'), 10%);
+        border-color: darken(themed('info-color'), 10%);
+      }
+    }
+  }
+}
+
+// 生成主题样式
+@each $theme, $map in $themes {
+  .theme-#{$theme} {
+    @include theme($theme);
+  }
+}

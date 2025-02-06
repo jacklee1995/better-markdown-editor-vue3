@@ -1,0 +1,170 @@
+// 清除浮动
+@mixin clearfix {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+// 单行文本省略号
+@mixin text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// 多行文本省略号
+@mixin text-overflow-multi($line: 2) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $line;
+  overflow: hidden;
+}
+
+// 绝对定位居中
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// 绝对定位全覆盖
+@mixin absolute-full {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+// 固定定位全覆盖
+@mixin fixed-full {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+// 响应式图片
+@mixin responsive-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// 长宽比
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &::before {
+    content: '';
+    display: block;
+    padding-top: ($height / $width) * 100%;
+  }
+}
+
+// 三角形
+@mixin triangle($direction, $size, $color) {
+  width: 0;
+  height: 0;
+  border-style: solid;
+
+  @if $direction == up {
+    border-width: 0 $size $size $size;
+    border-color: transparent transparent $color transparent;
+  } @else if $direction == down {
+    border-width: $size $size 0 $size;
+    border-color: $color transparent transparent transparent;
+  } @else if $direction == left {
+    border-width: $size $size $size 0;
+    border-color: transparent $color transparent transparent;
+  } @else if $direction == right {
+    border-width: $size 0 $size $size;
+    border-color: transparent transparent transparent $color;
+  }
+}
+
+// 渐变背景
+@mixin gradient-bg($start-color, $end-color, $orientation) {
+  background: $start-color;
+
+  @if $orientation == 'vertical' {
+    background: linear-gradient(to bottom, $start-color, $end-color);
+  } @else if $orientation == 'horizontal' {
+    background: linear-gradient(to right, $start-color, $end-color);
+  }
+}
+
+// 媒体查询
+@mixin media-query($breakpoint) {
+  @media only screen and #{inspect(map-get($breakpoints, $breakpoint))} {
+    @content;
+  }
+}
+
+// 悬浮效果
+@mixin hover {
+  &:hover {
+    @content;
+  }
+}
+
+// 禁用效果
+@mixin disabled {
+  &[disabled],
+  &.disabled {
+    @content;
+  }
+}
+
+// BEM命名规范
+@mixin b($block) {
+  $B: $namespace + '-' + $block !global;
+
+  .#{$B} {
+    @content;
+  }
+}
+
+@mixin e($element) {
+  $E: $element !global;
+  $selector: &;
+  $currentSelector: '';
+
+  @each $unit in $element {
+    $currentSelector: #{$currentSelector + '.' + $B + $element-separator + $unit + ','};
+  }
+
+  @if hitAllSpecialNestRule($selector) {
+    @at-root {
+      #{$selector} {
+        #{$currentSelector} {
+          @content;
+        }
+      }
+    }
+  } @else {
+    @at-root {
+      #{$currentSelector} {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin m($modifier) {
+  $selector: &;
+  $currentSelector: '';
+
+  @each $unit in $modifier {
+    $currentSelector: #{$currentSelector + $selector + $modifier-separator + $unit + ','};
+  }
+
+  @at-root {
+    #{$currentSelector} {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,127 @@
+@import '../variables';
+@import '../mixins';
+
+// 开关组件样式
+.switch {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  cursor: pointer;
+
+  // 开关轨道
+  &__core {
+    position: relative;
+    display: inline-block;
+    width: $switch-width;
+    height: $switch-height;
+    border-radius: $switch-border-radius;
+    background-color: $switch-background-color;
+    transition: background-color $transition-duration-base;
+
+    // 开关滑块
+    &::after {
+      content: '';
+      position: absolute;
+      top: $switch-thumb-gap;
+      left: $switch-thumb-gap;
+      width: $switch-thumb-size;
+      height: $switch-thumb-size;
+      border-radius: 50%;
+      background-color: $switch-thumb-color;
+      box-shadow: $switch-thumb-shadow;
+      transition: transform $transition-duration-base;
+    }
+  }
+
+  // 开关文本
+  &__label {
+    margin-left: $switch-label-margin;
+    color: $switch-label-color;
+    font-size: $switch-label-font-size;
+    transition: color $transition-duration-base;
+  }
+
+  // 选中状态
+  &.is-checked {
+    .switch__core {
+      background-color: $switch-checked-background-color;
+
+      &::after {
+        transform: translateX($switch-thumb-translate-x);
+      }
+    }
+
+    .switch__label {
+      color: $switch-checked-label-color;
+    }
+  }
+
+  // 禁用状态
+  &.is-disabled {
+    cursor: not-allowed;
+    opacity: $switch-disabled-opacity;
+
+    .switch__core {
+      background-color: $switch-disabled-background-color;
+
+      &::after {
+        background-color: $switch-disabled-thumb-color;
+      }
+    }
+
+    .switch__label {
+      color: $switch-disabled-label-color;
+    }
+  }
+
+  // 不同尺寸
+  &--small {
+    .switch__core {
+      width: $switch-small-width;
+      height: $switch-small-height;
+    }
+
+    .switch__label {
+      font-size: $switch-small-label-font-size;
+    }
+  }
+
+  &--large {
+    .switch__core {
+      width: $switch-large-width;
+      height: $switch-large-height;
+    }
+
+    .switch__label {
+      font-size: $switch-large-label-font-size;
+    }
+  }
+
+  // 不同主题色
+  @each $theme, $color in $theme-colors {
+    &--#{$theme} {
+      &.is-checked {
+        .switch__core {
+          background-color: $color;
+        }
+      }
+    }
+  }
+
+  // 圆角样式
+  &--round {
+    .switch__core {
+      border-radius: $switch-round-border-radius;
+    }
+  }
+
+  // 文本在左侧
+  &--label-left {
+    flex-direction: row-reverse;
+
+    .switch__label {
+      margin-left: 0;
+      margin-right: $switch-label-margin;
+    }
+  }
+}

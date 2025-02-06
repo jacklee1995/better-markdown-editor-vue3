@@ -1,0 +1,199 @@
+@import '../variables';
+@import '../mixins';
+
+// 分页组件样式
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: $pagination-margin;
+  font-size: $pagination-font-size;
+
+  // 分页项
+  &-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: $pagination-item-min-width;
+    height: $pagination-item-height;
+    margin: $pagination-item-margin;
+    padding: $pagination-item-padding;
+    color: $pagination-item-color;
+    background-color: $pagination-item-bg-color;
+    border: $pagination-item-border-width solid $pagination-item-border-color;
+    border-radius: $pagination-item-border-radius;
+    cursor: pointer;
+    transition: $pagination-item-transition;
+
+    // 悬停状态
+    &:hover {
+      color: $pagination-item-hover-color;
+      background-color: $pagination-item-hover-bg-color;
+      border-color: $pagination-item-hover-border-color;
+    }
+
+    // 禁用状态
+    &.disabled {
+      color: $pagination-item-disabled-color;
+      background-color: $pagination-item-disabled-bg-color;
+      border-color: $pagination-item-disabled-border-color;
+      cursor: not-allowed;
+    }
+
+    // 激活状态
+    &.active {
+      color: $pagination-item-active-color;
+      background-color: $pagination-item-active-bg-color;
+      border-color: $pagination-item-active-border-color;
+      cursor: default;
+    }
+  }
+
+  // 上一页和下一页按钮
+  &-prev,
+  &-next {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: $pagination-prev-next-min-width;
+    height: $pagination-prev-next-height;
+    padding: $pagination-prev-next-padding;
+    color: $pagination-prev-next-color;
+    background-color: $pagination-prev-next-bg-color;
+    border: $pagination-prev-next-border-width solid $pagination-prev-next-border-color;
+    border-radius: $pagination-prev-next-border-radius;
+    cursor: pointer;
+    transition: $pagination-prev-next-transition;
+
+    // 悬停状态
+    &:hover {
+      color: $pagination-prev-next-hover-color;
+      background-color: $pagination-prev-next-hover-bg-color;
+      border-color: $pagination-prev-next-hover-border-color;
+    }
+
+    // 禁用状态
+    &.disabled {
+      color: $pagination-prev-next-disabled-color;
+      background-color: $pagination-prev-next-disabled-bg-color;
+      border-color: $pagination-prev-next-disabled-border-color;
+      cursor: not-allowed;
+    }
+  }
+
+  // 省略号
+  &-ellipsis {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: $pagination-ellipsis-min-width;
+    height: $pagination-ellipsis-height;
+    margin: $pagination-ellipsis-margin;
+    padding: $pagination-ellipsis-padding;
+    color: $pagination-ellipsis-color;
+    background-color: $pagination-ellipsis-bg-color;
+    border: $pagination-ellipsis-border-width solid $pagination-ellipsis-border-color;
+    border-radius: $pagination-ellipsis-border-radius;
+    cursor: default;
+  }
+
+  // 跳转输入框
+  &-jumper {
+    display: inline-flex;
+    align-items: center;
+    margin-left: $pagination-jumper-margin-left;
+
+    .jumper-input {
+      width: $pagination-jumper-input-width;
+      height: $pagination-jumper-input-height;
+      margin: $pagination-jumper-input-margin;
+      padding: $pagination-jumper-input-padding;
+      color: $pagination-jumper-input-color;
+      background-color: $pagination-jumper-input-bg-color;
+      border: $pagination-jumper-input-border-width solid $pagination-jumper-input-border-color;
+      border-radius: $pagination-jumper-input-border-radius;
+      outline: none;
+      transition: $pagination-jumper-input-transition;
+
+      // 聚焦状态
+      &:focus {
+        border-color: $pagination-jumper-input-focus-border-color;
+      }
+    }
+  }
+
+  // 总页数
+  &-total {
+    margin-left: $pagination-total-margin-left;
+    color: $pagination-total-color;
+  }
+
+  // 不同尺寸
+  &-small {
+    font-size: $pagination-small-font-size;
+
+    .pagination-item {
+      min-width: $pagination-small-item-min-width;
+      height: $pagination-small-item-height;
+      margin: $pagination-small-item-margin;
+      padding: $pagination-small-item-padding;
+    }
+
+    .pagination-prev,
+    .pagination-next {
+      min-width: $pagination-small-prev-next-min-width;
+      height: $pagination-small-prev-next-height;
+      padding: $pagination-small-prev-next-padding;
+    }
+
+    .pagination-ellipsis {
+      min-width: $pagination-small-ellipsis-min-width;
+      height: $pagination-small-ellipsis-height;
+      margin: $pagination-small-ellipsis-margin;
+      padding: $pagination-small-ellipsis-padding;
+    }
+
+    .pagination-jumper {
+      .jumper-input {
+        width: $pagination-small-jumper-input-width;
+        height: $pagination-small-jumper-input-height;
+        margin: $pagination-small-jumper-input-margin;
+        padding: $pagination-small-jumper-input-padding;
+      }
+    }
+  }
+
+  &-large {
+    font-size: $pagination-large-font-size;
+
+    .pagination-item {
+      min-width: $pagination-large-item-min-width;
+      height: $pagination-large-item-height;
+      margin: $pagination-large-item-margin;
+      padding: $pagination-large-item-padding;
+    }
+
+    .pagination-prev,
+    .pagination-next {
+      min-width: $pagination-large-prev-next-min-width;
+      height: $pagination-large-prev-next-height;
+      padding: $pagination-large-prev-next-padding;
+    }
+
+    .pagination-ellipsis {
+      min-width: $pagination-large-ellipsis-min-width;
+      height: $pagination-large-ellipsis-height;
+      margin: $pagination-large-ellipsis-margin;
+      padding: $pagination-large-ellipsis-padding;
+    }
+
+    .pagination-jumper {
+      .jumper-input {
+        width: $pagination-large-jumper-input-width;
+        height: $pagination-large-jumper-input-height;
+        margin: $pagination-large-jumper-input-margin;
+        padding: $pagination-large-jumper-input-padding;
+      }
+    }
+  }
+}

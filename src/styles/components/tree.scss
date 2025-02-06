@@ -1,0 +1,155 @@
+@import '../variables';
+@import '../mixins';
+
+// 树形控件样式
+.tree {
+  font-size: $font-size-base;
+  color: $text-color;
+
+  // 节点
+  &-node {
+    position: relative;
+    padding-left: $spacing-base;
+    line-height: 2;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $background-color-light;
+    }
+
+    // 节点图标
+    &__icon {
+      display: inline-block;
+      margin-right: $spacing-small;
+      font-size: $font-size-large;
+      vertical-align: middle;
+      transition: transform 0.3s;
+
+      &--open {
+        transform: rotate(90deg);
+      }
+    }
+
+    // 节点标签
+    &__label {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    // 节点内容
+    &__content {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    // 节点复选框
+    &__checkbox {
+      display: inline-block;
+      margin-right: $spacing-small;
+      vertical-align: middle;
+    }
+
+    // 节点操作
+    &__actions {
+      position: absolute;
+      top: 50%;
+      right: $spacing-base;
+      transform: translateY(-50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+
+      .tree-node:hover & {
+        opacity: 1;
+      }
+    }
+
+    // 节点子节点
+    &__children {
+      margin-left: $spacing-large;
+    }
+  }
+
+  // 展开/折叠图标
+  &__toggle {
+    display: inline-block;
+    margin-right: $spacing-small;
+    font-size: $font-size-large;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: transform 0.3s;
+
+    &--open {
+      transform: rotate(90deg);
+    }
+  }
+
+  // 加载中状态
+  &__loading {
+    display: inline-block;
+    margin-left: $spacing-base;
+    font-size: $font-size-large;
+    vertical-align: middle;
+    animation: spin 1s linear infinite;
+  }
+
+  // 旋转动画
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  // 拖拽状态
+  &__draggable {
+    .tree-node {
+      &__content {
+        user-select: none;
+      }
+
+      &--dragging {
+        background-color: $background-color-light;
+      }
+
+      &--drop-inner {
+        &::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          border: 2px solid $primary-color;
+          pointer-events: none;
+        }
+      }
+
+      &--drop-prev {
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: $spacing-base;
+          right: 0;
+          border-top: 2px solid $primary-color;
+          pointer-events: none;
+        }
+      }
+
+      &--drop-next {
+        &::after {
+          content: '';
+          position: absolute;
+          left: $spacing-base;
+          right: 0;
+          bottom: 0;
+          border-bottom: 2px solid $primary-color;
+          pointer-events: none;
+        }
+      }
+    }
+  }
+}

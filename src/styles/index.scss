@@ -1,0 +1,93 @@
+// src/styles/index.scss
+
+// 导入变量和函数
+@import 'variables';
+@import 'functions';
+
+// 导入混合宏
+@import 'mixins';
+
+// 导入基础样式
+@import 'reset';
+
+// 导入布局样式
+@import 'layouts/layout';
+@import 'layouts/header';
+@import 'layouts/main';
+@import 'layouts/footer';
+@import 'layouts/grid';
+
+// 导入工具类样式
+@import 'utilities/background';
+@import 'utilities/display';
+@import 'utilities/flex';
+@import 'utilities/position';
+@import 'utilities/shadow';
+@import 'utilities/size';
+@import 'utilities/spacing';
+
+// 导入主题样式
+@import 'themes/theme';
+@import 'themes/light';
+@import 'themes/dark';
+
+// 根元素样式
+:root {
+  // 字体
+  --font-family-base: #{$font-family-base};
+  --font-family-monospace: #{$font-family-monospace};
+  --font-size-root: #{$font-size-root};
+  --font-size-base: #{$font-size-base};
+  --font-weight-base: #{$font-weight-base};
+  --line-height-base: #{$line-height-base};
+
+  // 颜色
+  @each $color, $value in $colors {
+    --#{$color}: #{$value};
+  }
+
+  // z-index
+  @each $key, $value in $z-indexes {
+    --z-index-#{$key}: #{$value};
+  }
+
+  // 响应式断点
+  @each $key, $value in $breakpoints {
+    --breakpoint-#{$key}: #{$value};
+  }
+}
+
+// 基础样式
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-base);
+  line-height: var(--line-height-base);
+  color: var(--text-color);
+  background-color: var(--bg-color);
+}
+
+// 滚动条样式
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-bg-color);
+  border-radius: 4px;
+
+  &:hover {
+    background-color: var(--scrollbar-thumb-hover-bg-color);
+  }
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track-bg-color);
+}
+
+// 选中文本样式
+::selection {
+  color: var(--selection-text-color);
+  background-color: var(--selection-bg-color);
+}

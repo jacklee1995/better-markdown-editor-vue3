@@ -1,0 +1,206 @@
+@import '../variables';
+@import '../mixins';
+
+// 标签页组件样式
+.tabs {
+  display: flex;
+  flex-direction: column;
+
+  // 标签页头部
+  &-header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $border-color-base;
+    background-color: $background-color-base;
+    padding: 0 $spacing-base;
+
+    // 标签页标题
+    &-title {
+      padding: $spacing-small $spacing-base;
+      font-size: $font-size-large;
+      font-weight: $font-weight-primary;
+      color: $color-text-primary;
+      cursor: pointer;
+      transition: color $transition-duration-base;
+
+      &:hover {
+        color: $color-primary;
+      }
+
+      // 激活状态下的标签页标题
+      &.active {
+        color: $color-primary;
+        border-bottom: 2px solid $color-primary;
+      }
+
+      // 禁用状态下的标签页标题
+      &.disabled {
+        color: $color-text-placeholder;
+        cursor: not-allowed;
+      }
+    }
+
+    // 标签页额外操作区域
+    &-extra {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  // 标签页内容
+  &-content {
+    padding: $spacing-large;
+    background-color: $color-white;
+
+    // 标签页面板
+    &-pane {
+      display: none;
+
+      // 激活状态下的标签页面板
+      &.active {
+        display: block;
+      }
+    }
+  }
+
+  // 卡片风格的标签页
+  &-card {
+    border: 1px solid $border-color-base;
+    border-radius: $border-radius-base;
+
+    .tabs-header {
+      border-bottom: none;
+      background-color: $color-white;
+      padding: $spacing-small;
+
+      &-title {
+        border: 1px solid transparent;
+        border-radius: $border-radius-base $border-radius-base 0 0;
+        transition:
+          color $transition-duration-base,
+          border-color $transition-duration-base,
+          background-color $transition-duration-base;
+
+        &.active {
+          color: $color-primary;
+          border-color: $border-color-base;
+          border-bottom-color: $color-white;
+          background-color: $color-white;
+        }
+      }
+    }
+
+    .tabs-content {
+      border-top: 1px solid $border-color-base;
+    }
+  }
+
+  // 边框卡片风格的标签页
+  &-border-card {
+    border: 1px solid $border-color-base;
+    border-radius: $border-radius-base;
+
+    .tabs-header {
+      border-bottom: 1px solid $border-color-base;
+      background-color: $background-color-base;
+      padding: 0 $spacing-base;
+
+      &-title {
+        color: $color-text-regular;
+        border-right: 1px solid $border-color-base;
+        transition:
+          color $transition-duration-base,
+          background-color $transition-duration-base;
+
+        &:last-child {
+          border-right: none;
+        }
+
+        &.active {
+          color: $color-primary;
+          background-color: $color-white;
+        }
+      }
+    }
+
+    .tabs-content {
+      padding: $spacing-base;
+    }
+  }
+
+  // 不同尺寸的标签页
+  &-large {
+    .tabs-header-title {
+      font-size: $font-size-extra-large;
+      padding: $spacing-base $spacing-large;
+    }
+  }
+
+  &-small {
+    .tabs-header-title {
+      font-size: $font-size-base;
+      padding: $spacing-extra-small $spacing-small;
+    }
+  }
+
+  // 标签页位置
+  &-left,
+  &-right {
+    flex-direction: row;
+
+    .tabs-header {
+      flex-direction: column;
+      border-bottom: none;
+      border-right: 1px solid $border-color-base;
+      padding: $spacing-base 0;
+
+      &-title {
+        border-bottom: none;
+        border-right: 2px solid transparent;
+        padding: $spacing-base $spacing-large;
+
+        &.active {
+          border-bottom: none;
+          border-right-color: $color-primary;
+        }
+      }
+    }
+
+    .tabs-content {
+      flex: 1;
+      padding: 0 $spacing-large;
+    }
+  }
+
+  &-right {
+    .tabs-header {
+      order: 1;
+      border-right: none;
+      border-left: 1px solid $border-color-base;
+    }
+
+    .tabs-content {
+      order: 0;
+    }
+  }
+
+  &-bottom {
+    .tabs-header {
+      order: 1;
+      border-bottom: none;
+      border-top: 1px solid $border-color-base;
+
+      &-title {
+        &.active {
+          border-bottom: none;
+          border-top: 2px solid $color-primary;
+        }
+      }
+    }
+
+    .tabs-content {
+      order: 0;
+    }
+  }
+}

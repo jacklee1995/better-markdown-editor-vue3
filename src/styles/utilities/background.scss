@@ -1,0 +1,137 @@
+// 背景颜色工具类
+
+// 背景颜色
+@each $color, $value in $colors {
+  .bg-#{$color} {
+    background-color: $value !important;
+  }
+}
+
+// 背景渐变
+.bg-gradient {
+  background-image: var(--bs-gradient) !important;
+}
+
+// 背景透明度
+@each $opacity, $value in $opacities {
+  .bg-opacity-#{$opacity} {
+    --bs-bg-opacity: #{$value};
+  }
+}
+
+// 背景重复
+.bg-repeat {
+  background-repeat: repeat !important;
+}
+.bg-no-repeat {
+  background-repeat: no-repeat !important;
+}
+.bg-repeat-x {
+  background-repeat: repeat-x !important;
+}
+.bg-repeat-y {
+  background-repeat: repeat-y !important;
+}
+
+// 背景位置
+.bg-position-top {
+  background-position: top !important;
+}
+.bg-position-bottom {
+  background-position: bottom !important;
+}
+.bg-position-center {
+  background-position: center !important;
+}
+.bg-position-left {
+  background-position: left !important;
+}
+.bg-position-right {
+  background-position: right !important;
+}
+
+// 背景尺寸
+.bg-size-auto {
+  background-size: auto !important;
+}
+.bg-size-cover {
+  background-size: cover !important;
+}
+.bg-size-contain {
+  background-size: contain !important;
+}
+
+// 背景附着
+.bg-attachment-fixed {
+  background-attachment: fixed !important;
+}
+.bg-attachment-scroll {
+  background-attachment: scroll !important;
+}
+.bg-attachment-local {
+  background-attachment: local !important;
+}
+
+// 背景裁剪
+.bg-clip-border {
+  background-clip: border-box !important;
+}
+.bg-clip-padding {
+  background-clip: padding-box !important;
+}
+.bg-clip-content {
+  background-clip: content-box !important;
+}
+.bg-clip-text {
+  background-clip: text !important;
+}
+
+// 背景混合模式
+.bg-blend-normal {
+  background-blend-mode: normal !important;
+}
+.bg-blend-multiply {
+  background-blend-mode: multiply !important;
+}
+.bg-blend-screen {
+  background-blend-mode: screen !important;
+}
+.bg-blend-overlay {
+  background-blend-mode: overlay !important;
+}
+.bg-blend-darken {
+  background-blend-mode: darken !important;
+}
+.bg-blend-lighten {
+  background-blend-mode: lighten !important;
+}
+.bg-blend-color-dodge {
+  background-blend-mode: color-dodge !important;
+}
+.bg-blend-color-burn {
+  background-blend-mode: color-burn !important;
+}
+.bg-blend-hard-light {
+  background-blend-mode: hard-light !important;
+}
+.bg-blend-soft-light {
+  background-blend-mode: soft-light !important;
+}
+.bg-blend-difference {
+  background-blend-mode: difference !important;
+}
+.bg-blend-exclusion {
+  background-blend-mode: exclusion !important;
+}
+.bg-blend-hue {
+  background-blend-mode: hue !important;
+}
+.bg-blend-saturation {
+  background-blend-mode: saturation !important;
+}
+.bg-blend-color {
+  background-blend-mode: color !important;
+}
+.bg-blend-luminosity {
+  background-blend-mode: luminosity !important;
+}

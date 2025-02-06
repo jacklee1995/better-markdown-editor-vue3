@@ -1,0 +1,190 @@
+@import '../variables';
+@import '../mixins';
+
+// 日期选择器样式
+.datepicker {
+  display: inline-block;
+  position: relative;
+
+  // 输入框样式
+  &-input {
+    display: inline-block;
+    width: 100%;
+    height: $input-height;
+    padding: $input-padding-y $input-padding-x;
+    font-size: $input-font-size;
+    line-height: $input-line-height;
+    color: $input-color;
+    background-color: $input-bg;
+    background-clip: padding-box;
+    border: $input-border-width solid $input-border-color;
+    border-radius: $input-border-radius;
+    transition: $input-transition;
+
+    &:focus {
+      color: $input-focus-color;
+      background-color: $input-focus-bg;
+      border-color: $input-focus-border-color;
+      outline: 0;
+      box-shadow: $input-focus-box-shadow;
+    }
+
+    // 禁用状态
+    &[disabled],
+    &.disabled {
+      background-color: $input-disabled-bg;
+      opacity: 1;
+      cursor: not-allowed;
+    }
+  }
+
+  // 下拉面板样式
+  &-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: $zindex-dropdown;
+    display: none;
+    float: left;
+    min-width: $datepicker-dropdown-min-width;
+    padding: $datepicker-dropdown-padding;
+    margin: $datepicker-dropdown-margin;
+    font-size: $font-size-base;
+    color: $body-color;
+    text-align: left;
+    list-style: none;
+    background-color: $datepicker-dropdown-bg;
+    background-clip: padding-box;
+    border: $datepicker-dropdown-border-width solid $datepicker-dropdown-border-color;
+    border-radius: $datepicker-dropdown-border-radius;
+    box-shadow: $datepicker-dropdown-box-shadow;
+
+    // 显示状态
+    &.show {
+      display: block;
+    }
+  }
+
+  // 日期面板样式
+  &-panel {
+    display: flex;
+    flex-direction: column;
+    width: $datepicker-panel-width;
+
+    // 面板头部
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: $datepicker-panel-header-padding;
+      border-bottom: $datepicker-panel-header-border-width solid
+        $datepicker-panel-header-border-color;
+
+      // 上一年/上一月按钮
+      .prev-btn,
+      .next-btn {
+        padding: 0;
+        color: $datepicker-panel-header-btn-color;
+        background: none;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        transition: $datepicker-panel-header-btn-transition;
+
+        &:hover {
+          color: $datepicker-panel-header-btn-hover-color;
+        }
+      }
+
+      // 年月选择
+      .picker-switch {
+        flex: 1;
+        text-align: center;
+        font-weight: $datepicker-panel-header-switch-font-weight;
+        cursor: pointer;
+        transition: $datepicker-panel-header-switch-transition;
+
+        &:hover {
+          color: $datepicker-panel-header-switch-hover-color;
+        }
+      }
+    }
+
+    // 面板主体
+    &-body {
+      flex: 1;
+      padding: $datepicker-panel-body-padding;
+
+      // 日期表格
+      .datepicker-table {
+        width: 100%;
+        table-layout: fixed;
+        border-collapse: collapse;
+
+        th,
+        td {
+          padding: $datepicker-table-cell-padding;
+          text-align: center;
+        }
+
+        // 日期单元格
+        td {
+          cursor: pointer;
+          transition: $datepicker-table-cell-transition;
+
+          &:hover {
+            background-color: $datepicker-table-cell-hover-bg;
+          }
+
+          // 选中状态
+          &.active {
+            color: $datepicker-table-cell-active-color;
+            background-color: $datepicker-table-cell-active-bg;
+          }
+
+          // 禁用状态
+          &.disabled {
+            color: $datepicker-table-cell-disabled-color;
+            background-color: $datepicker-table-cell-disabled-bg;
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+
+    // 面板底部
+    &-footer {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: $datepicker-panel-footer-padding;
+      border-top: $datepicker-panel-footer-border-width solid $datepicker-panel-footer-border-color;
+
+      // 确定按钮
+      .confirm-btn {
+        margin-left: $datepicker-panel-footer-btn-margin-x;
+      }
+    }
+  }
+
+  // 不同尺寸
+  &-sm {
+    .datepicker-input {
+      height: $input-height-sm;
+      padding: $input-padding-y-sm $input-padding-x-sm;
+      font-size: $input-font-size-sm;
+      line-height: $input-line-height-sm;
+      border-radius: $input-border-radius-sm;
+    }
+  }
+
+  &-lg {
+    .datepicker-input {
+      height: $input-height-lg;
+      padding: $input-padding-y-lg $input-padding-x-lg;
+      font-size: $input-font-size-lg;
+      line-height: $input-line-height-lg;
+      border-radius: $input-border-radius-lg;
+    }
+  }
+}

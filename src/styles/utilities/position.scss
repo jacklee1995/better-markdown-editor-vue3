@@ -1,0 +1,116 @@
+// 定位工具类
+
+// 定位类型
+.position-static {
+  position: static !important;
+}
+.position-relative {
+  position: relative !important;
+}
+.position-absolute {
+  position: absolute !important;
+}
+.position-fixed {
+  position: fixed !important;
+}
+.position-sticky {
+  position: sticky !important;
+}
+
+// 定位位置
+.top-0 {
+  top: 0 !important;
+}
+.top-50 {
+  top: 50% !important;
+}
+.top-100 {
+  top: 100% !important;
+}
+.bottom-0 {
+  bottom: 0 !important;
+}
+.bottom-50 {
+  bottom: 50% !important;
+}
+.bottom-100 {
+  bottom: 100% !important;
+}
+.start-0 {
+  left: 0 !important;
+}
+.start-50 {
+  left: 50% !important;
+}
+.start-100 {
+  left: 100% !important;
+}
+.end-0 {
+  right: 0 !important;
+}
+.end-50 {
+  right: 50% !important;
+}
+.end-100 {
+  right: 100% !important;
+}
+
+// 定位偏移
+.translate-middle {
+  transform: translate(-50%, -50%) !important;
+}
+.translate-middle-x {
+  transform: translateX(-50%) !important;
+}
+.translate-middle-y {
+  transform: translateY(-50%) !important;
+}
+
+// 定位层级
+.z-0 {
+  z-index: 0 !important;
+}
+.z-10 {
+  z-index: 10 !important;
+}
+.z-20 {
+  z-index: 20 !important;
+}
+.z-30 {
+  z-index: 30 !important;
+}
+.z-40 {
+  z-index: 40 !important;
+}
+.z-50 {
+  z-index: 50 !important;
+}
+.z-auto {
+  z-index: auto !important;
+}
+
+// 定位顺序
+.order-first {
+  order: -1 !important;
+}
+.order-0 {
+  order: 0 !important;
+}
+.order-1 {
+  order: 1 !important;
+}
+.order-2 {
+  order: 2 !important;
+}
+.order-3 {
+  order: 3 !important;
+}
+.order-4 {
+  order: 4 !important;
+}
+.order-5 {
+  order: 5 !important;
+}
+.order-last {
+  order: 6 !important;
+}

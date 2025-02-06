@@ -1,0 +1,124 @@
+@import '../variables';
+@import '../mixins';
+
+// 面包屑导航样式
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  font-size: $font-size-base;
+  color: $text-color-regular;
+
+  // 面包屑项
+  &-item {
+    display: flex;
+    align-items: center;
+
+    // 面包屑链接
+    a {
+      color: $text-color-regular;
+      transition: color $transition-duration-base;
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
+
+    // 面包屑分隔符
+    &:not(:last-child)::after {
+      content: '/';
+      margin: 0 $spacing-small;
+      color: $text-color-placeholder;
+    }
+
+    // 当前项
+    &.active {
+      color: $text-color-primary;
+      font-weight: $font-weight-bold;
+    }
+  }
+
+  // 图标
+  .icon {
+    margin-right: $spacing-extra-small;
+    font-size: $font-size-large;
+  }
+
+  // 下拉菜单触发器
+  &-dropdown-trigger {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: color $transition-duration-base;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  // 下拉菜单图标
+  .dropdown-icon {
+    margin-left: $spacing-extra-small;
+    font-size: $font-size-small;
+    transition: transform $transition-duration-base;
+  }
+
+  // 下拉菜单打开时的图标旋转
+  &-dropdown-trigger.active .dropdown-icon {
+    transform: rotate(180deg);
+  }
+
+  // 下拉菜单
+  &-dropdown {
+    min-width: 120px;
+    padding: $spacing-small 0;
+    background-color: $color-white;
+    border-radius: $border-radius-base;
+    box-shadow: $box-shadow-light;
+
+    // 下拉菜单项
+    &-item {
+      display: flex;
+      align-items: center;
+      padding: $spacing-extra-small $spacing-base;
+      color: $text-color-regular;
+      cursor: pointer;
+      transition: background-color $transition-duration-base;
+
+      &:hover {
+        background-color: $background-color-base;
+      }
+
+      // 下拉菜单项图标
+      .icon {
+        margin-right: $spacing-small;
+        font-size: $font-size-base;
+      }
+    }
+  }
+
+  // 响应式
+  @include media-breakpoint-down(sm) {
+    font-size: $font-size-small;
+
+    &-item:not(:last-child)::after {
+      margin: 0 $spacing-extra-small;
+    }
+
+    .icon {
+      font-size: $font-size-base;
+    }
+
+    &-dropdown-trigger {
+      padding: $spacing-extra-small;
+    }
+
+    &-dropdown {
+      min-width: 100px;
+      padding: $spacing-extra-small 0;
+
+      &-item {
+        padding: $spacing-extra-small $spacing-small;
+      }
+    }
+  }
+}

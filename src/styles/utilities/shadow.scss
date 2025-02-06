@@ -1,0 +1,94 @@
+// 阴影工具类
+
+// 基础阴影
+.shadow {
+  box-shadow: $box-shadow-base !important;
+}
+
+// 大阴影
+.shadow-lg {
+  box-shadow: $box-shadow-lg !important;
+}
+
+// 小阴影
+.shadow-sm {
+  box-shadow: $box-shadow-sm !important;
+}
+
+// 无阴影
+.shadow-none {
+  box-shadow: none !important;
+}
+
+// 自定义阴影
+@each $size, $value in $shadows {
+  .shadow-#{$size} {
+    box-shadow: $value !important;
+  }
+}
+
+// 阴影过渡
+.shadow-transition {
+  transition: box-shadow $transition-duration-base ease-in-out !important;
+}
+
+// 悬停阴影
+.shadow-hover {
+  &:hover {
+    box-shadow: $box-shadow-lg !important;
+  }
+}
+
+// 聚焦阴影
+.shadow-focus {
+  &:focus {
+    box-shadow: $box-shadow-lg !important;
+  }
+}
+
+// 激活阴影
+.shadow-active {
+  &:active {
+    box-shadow: $box-shadow-lg !important;
+  }
+}
+
+// 内阴影
+.shadow-inset {
+  box-shadow: inset 0 2px 4px 0 rgba($black, 0.06) !important;
+}
+
+// 外阴影
+.shadow-outline {
+  box-shadow: 0 0 0 3px rgba($primary, 0.5) !important;
+}
+
+// 多重阴影
+.shadow-multiple {
+  box-shadow: $box-shadow-base, $box-shadow-lg !important;
+}
+
+// 阴影方向
+.shadow-top {
+  box-shadow:
+    0 -4px 6px -1px rgba($black, 0.1),
+    0 -2px 4px -1px rgba($black, 0.06) !important;
+}
+
+.shadow-right {
+  box-shadow:
+    4px 0 6px -1px rgba($black, 0.1),
+    2px 0 4px -1px rgba($black, 0.06) !important;
+}
+
+.shadow-bottom {
+  box-shadow:
+    0 4px 6px -1px rgba($black, 0.1),
+    0 2px 4px -1px rgba($black, 0.06) !important;
+}
+
+.shadow-left {
+  box-shadow:
+    -4px 0 6px -1px rgba($black, 0.1),
+    -2px 0 4px -1px rgba($black, 0.06) !important;
+}

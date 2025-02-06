@@ -1,0 +1,336 @@
+// 间距工具类
+
+// 外边距
+.m-0 {
+  margin: 0 !important;
+}
+.m-1 {
+  margin: $spacing-base * 0.25 !important;
+}
+.m-2 {
+  margin: $spacing-base * 0.5 !important;
+}
+.m-3 {
+  margin: $spacing-base !important;
+}
+.m-4 {
+  margin: $spacing-base * 1.5 !important;
+}
+.m-5 {
+  margin: $spacing-base * 3 !important;
+}
+.m-auto {
+  margin: auto !important;
+}
+
+.mx-0 {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+.mx-1 {
+  margin-left: $spacing-base * 0.25 !important;
+  margin-right: $spacing-base * 0.25 !important;
+}
+.mx-2 {
+  margin-left: $spacing-base * 0.5 !important;
+  margin-right: $spacing-base * 0.5 !important;
+}
+.mx-3 {
+  margin-left: $spacing-base !important;
+  margin-right: $spacing-base !important;
+}
+.mx-4 {
+  margin-left: $spacing-base * 1.5 !important;
+  margin-right: $spacing-base * 1.5 !important;
+}
+.mx-5 {
+  margin-left: $spacing-base * 3 !important;
+  margin-right: $spacing-base * 3 !important;
+}
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.my-0 {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+.my-1 {
+  margin-top: $spacing-base * 0.25 !important;
+  margin-bottom: $spacing-base * 0.25 !important;
+}
+.my-2 {
+  margin-top: $spacing-base * 0.5 !important;
+  margin-bottom: $spacing-base * 0.5 !important;
+}
+.my-3 {
+  margin-top: $spacing-base !important;
+  margin-bottom: $spacing-base !important;
+}
+.my-4 {
+  margin-top: $spacing-base * 1.5 !important;
+  margin-bottom: $spacing-base * 1.5 !important;
+}
+.my-5 {
+  margin-top: $spacing-base * 3 !important;
+  margin-bottom: $spacing-base * 3 !important;
+}
+.my-auto {
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+}
+
+.mt-0 {
+  margin-top: 0 !important;
+}
+.mt-1 {
+  margin-top: $spacing-base * 0.25 !important;
+}
+.mt-2 {
+  margin-top: $spacing-base * 0.5 !important;
+}
+.mt-3 {
+  margin-top: $spacing-base !important;
+}
+.mt-4 {
+  margin-top: $spacing-base * 1.5 !important;
+}
+.mt-5 {
+  margin-top: $spacing-base * 3 !important;
+}
+.mt-auto {
+  margin-top: auto !important;
+}
+
+.me-0 {
+  margin-right: 0 !important;
+}
+.me-1 {
+  margin-right: $spacing-base * 0.25 !important;
+}
+.me-2 {
+  margin-right: $spacing-base * 0.5 !important;
+}
+.me-3 {
+  margin-right: $spacing-base !important;
+}
+.me-4 {
+  margin-right: $spacing-base * 1.5 !important;
+}
+.me-5 {
+  margin-right: $spacing-base * 3 !important;
+}
+.me-auto {
+  margin-right: auto !important;
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+.mb-1 {
+  margin-bottom: $spacing-base * 0.25 !important;
+}
+.mb-2 {
+  margin-bottom: $spacing-base * 0.5 !important;
+}
+.mb-3 {
+  margin-bottom: $spacing-base !important;
+}
+.mb-4 {
+  margin-bottom: $spacing-base * 1.5 !important;
+}
+.mb-5 {
+  margin-bottom: $spacing-base * 3 !important;
+}
+.mb-auto {
+  margin-bottom: auto !important;
+}
+
+.ms-0 {
+  margin-left: 0 !important;
+}
+.ms-1 {
+  margin-left: $spacing-base * 0.25 !important;
+}
+.ms-2 {
+  margin-left: $spacing-base * 0.5 !important;
+}
+.ms-3 {
+  margin-left: $spacing-base !important;
+}
+.ms-4 {
+  margin-left: $spacing-base * 1.5 !important;
+}
+.ms-5 {
+  margin-left: $spacing-base * 3 !important;
+}
+.ms-auto {
+  margin-left: auto !important;
+}
+
+// 内边距
+.p-0 {
+  padding: 0 !important;
+}
+.p-1 {
+  padding: $spacing-base * 0.25 !important;
+}
+.p-2 {
+  padding: $spacing-base * 0.5 !important;
+}
+.p-3 {
+  padding: $spacing-base !important;
+}
+.p-4 {
+  padding: $spacing-base * 1.5 !important;
+}
+.p-5 {
+  padding: $spacing-base * 3 !important;
+}
+
+.px-0 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.px-1 {
+  padding-left: $spacing-base * 0.25 !important;
+  padding-right: $spacing-base * 0.25 !important;
+}
+.px-2 {
+  padding-left: $spacing-base * 0.5 !important;
+  padding-right: $spacing-base * 0.5 !important;
+}
+.px-3 {
+  padding-left: $spacing-base !important;
+  padding-right: $spacing-base !important;
+}
+.px-4 {
+  padding-left: $spacing-base * 1.5 !important;
+  padding-right: $spacing-base * 1.5 !important;
+}
+.px-5 {
+  padding-left: $spacing-base * 3 !important;
+  padding-right: $spacing-base * 3 !important;
+}
+
+.py-0 {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.py-1 {
+  padding-top: $spacing-base * 0.25 !important;
+  padding-bottom: $spacing-base * 0.25 !important;
+}
+.py-2 {
+  padding-top: $spacing-base * 0.5 !important;
+  padding-bottom: $spacing-base * 0.5 !important;
+}
+.py-3 {
+  padding-top: $spacing-base !important;
+  padding-bottom: $spacing-base !important;
+}
+.py-4 {
+  padding-top: $spacing-base * 1.5 !important;
+  padding-bottom: $spacing-base * 1.5 !important;
+}
+.py-5 {
+  padding-top: $spacing-base * 3 !important;
+  padding-bottom: $spacing-base * 3 !important;
+}
+
+.pt-0 {
+  padding-top: 0 !important;
+}
+.pt-1 {
+  padding-top: $spacing-base * 0.25 !important;
+}
+.pt-2 {
+  padding-top: $spacing-base * 0.5 !important;
+}
+.pt-3 {
+  padding-top: $spacing-base !important;
+}
+.pt-4 {
+  padding-top: $spacing-base * 1.5 !important;
+}
+.pt-5 {
+  padding-top: $spacing-base * 3 !important;
+}
+
+.pe-0 {
+  padding-right: 0 !important;
+}
+.pe-1 {
+  padding-right: $spacing-base * 0.25 !important;
+}
+.pe-2 {
+  padding-right: $spacing-base * 0.5 !important;
+}
+.pe-3 {
+  padding-right: $spacing-base !important;
+}
+.pe-4 {
+  padding-right: $spacing-base * 1.5 !important;
+}
+.pe-5 {
+  padding-right: $spacing-base * 3 !important;
+}
+
+.pb-0 {
+  padding-bottom: 0 !important;
+}
+.pb-1 {
+  padding-bottom: $spacing-base * 0.25 !important;
+}
+.pb-2 {
+  padding-bottom: $spacing-base * 0.5 !important;
+}
+.pb-3 {
+  padding-bottom: $spacing-base !important;
+}
+.pb-4 {
+  padding-bottom: $spacing-base * 1.5 !important;
+}
+.pb-5 {
+  padding-bottom: $spacing-base * 3 !important;
+}
+
+.ps-0 {
+  padding-left: 0 !important;
+}
+.ps-1 {
+  padding-left: $spacing-base * 0.25 !important;
+}
+.ps-2 {
+  padding-left: $spacing-base * 0.5 !important;
+}
+.ps-3 {
+  padding-left: $spacing-base !important;
+}
+.ps-4 {
+  padding-left: $spacing-base * 1.5 !important;
+}
+.ps-5 {
+  padding-left: $spacing-base * 3 !important;
+}
+
+// 间隙
+.gap-0 {
+  gap: 0 !important;
+}
+.gap-1 {
+  gap: $spacing-base * 0.25 !important;
+}
+.gap-2 {
+  gap: $spacing-base * 0.5 !important;
+}
+.gap-3 {
+  gap: $spacing-base !important;
+}
+.gap-4 {
+  gap: $spacing-base * 1.5 !important;
+}
+.gap-5 {
+  gap: $spacing-base * 3 !important;
+}

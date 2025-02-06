@@ -1,0 +1,321 @@
+@import '../variables';
+@import '../mixins';
+
+// 预览区样式
+.preview {
+  flex: 1;
+  padding: $spacing-large;
+  overflow-y: auto;
+  background-color: $preview-bg-color;
+
+  // 预览区头部
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $spacing-large;
+
+    // 预览区标题
+    &-title {
+      margin: 0;
+      font-size: $font-size-large;
+      font-weight: bold;
+    }
+
+    // 预览区操作
+    &-actions {
+      display: flex;
+      align-items: center;
+
+      .action-item {
+        margin-left: $spacing-base;
+        cursor: pointer;
+        color: $preview-action-color;
+        transition: color $transition-duration-base;
+
+        &:hover {
+          color: $preview-action-hover-color;
+        }
+      }
+    }
+  }
+
+  // 预览区主体
+  &-body {
+    // 预览内容
+    .preview-content {
+      line-height: 1.6;
+
+      // 标题样式
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin: $spacing-large 0 $spacing-base;
+        font-weight: bold;
+        color: $preview-heading-color;
+
+        &:hover {
+          .anchor {
+            opacity: 1;
+          }
+        }
+
+        .anchor {
+          float: left;
+          margin-left: -20px;
+          opacity: 0;
+          cursor: pointer;
+          transition: opacity $transition-duration-base;
+
+          &:hover {
+            color: $preview-heading-anchor-hover-color;
+          }
+        }
+      }
+
+      h1 {
+        font-size: 2em;
+      }
+
+      h2 {
+        font-size: 1.5em;
+      }
+
+      h3 {
+        font-size: 1.25em;
+      }
+
+      h4 {
+        font-size: 1em;
+      }
+
+      h5 {
+        font-size: 0.875em;
+      }
+
+      h6 {
+        font-size: 0.85em;
+      }
+
+      // 段落样式
+      p {
+        margin-bottom: $spacing-base;
+      }
+
+      // 引用样式
+      blockquote {
+        margin: $spacing-base 0;
+        padding: $spacing-small $spacing-base;
+        color: $preview-blockquote-color;
+        border-left: 4px solid $preview-blockquote-border-color;
+        background-color: $preview-blockquote-bg-color;
+      }
+
+      // 列表样式
+      ul,
+      ol {
+        margin-bottom: $spacing-base;
+        padding-left: 2em;
+
+        ul,
+        ol {
+          margin-bottom: 0;
+        }
+      }
+
+      // 代码块样式
+      pre {
+        margin: $spacing-base 0;
+        padding: $spacing-base;
+        overflow: auto;
+        font-size: $font-size-base;
+        background-color: $preview-code-bg-color;
+        border-radius: $border-radius-base;
+
+        code {
+          padding: 0;
+          color: inherit;
+          background-color: transparent;
+        }
+      }
+
+      // 行内代码样式
+      code {
+        padding: 2px 4px;
+        color: $preview-code-color;
+        background-color: $preview-code-bg-color;
+        border-radius: $border-radius-base;
+      }
+
+      // 表格样式
+      table {
+        width: 100%;
+        margin-bottom: $spacing-base;
+        border-collapse: collapse;
+
+        th,
+        td {
+          padding: $spacing-small $spacing-base;
+          border: 1px solid $preview-table-border-color;
+        }
+
+        th {
+          font-weight: bold;
+          background-color: $preview-table-header-bg-color;
+        }
+
+        tr:nth-child(2n) {
+          background-color: $preview-table-row-bg-color;
+        }
+      }
+
+      // 图片样式
+      img {
+        max-width: 100%;
+      }
+
+      // 分割线样式
+      hr {
+        margin: $spacing-large 0;
+        border: none;
+        border-top: 1px solid $preview-hr-color;
+      }
+
+      // 任务列表样式
+      .task-list-item {
+        list-style-type: none;
+
+        input {
+          margin-right: $spacing-small;
+          vertical-align: middle;
+        }
+      }
+
+      // Emoji 样式
+      .emoji {
+        display: inline-block;
+        width: 1.2em;
+        height: 1.2em;
+        vertical-align: middle;
+        background-size: contain;
+      }
+
+      // 数学公式样式
+      .katex {
+        font-size: $font-size-base;
+      }
+
+      // Mermaid 图表样式
+      .mermaid {
+        margin-bottom: $spacing-base;
+        text-align: center;
+      }
+
+      // Echarts 图表样式
+      .echarts {
+        margin-bottom: $spacing-base;
+        width: 100%;
+        height: 400px;
+      }
+    }
+  }
+
+  // 预览区底部
+  &-footer {
+    margin-top: $spacing-large;
+    text-align: center;
+    color: $preview-footer-color;
+    font-size: $font-size-small;
+  }
+
+  // 锚点导航
+  &-anchor {
+    position: fixed;
+    right: $spacing-large;
+    top: $header-height + $spacing-large;
+    width: 200px;
+    max-height: calc(100vh - #{$header-height} - #{$spacing-large} * 2);
+    overflow-y: auto;
+    padding-left: $spacing-base;
+    border-left: 1px solid $preview-anchor-border-color;
+
+    .anchor-list {
+      .anchor-item {
+        display: block;
+        padding: $spacing-small 0;
+        color: $preview-anchor-color;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: pointer;
+        transition: color $transition-duration-base;
+
+        &:hover {
+          color: $preview-anchor-hover-color;
+        }
+
+        &.active {
+          color: $preview-anchor-active-color;
+        }
+
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  // 目录导航
+  &-toc {
+    position: fixed;
+    right: $spacing-large;
+    top: $header-height + $spacing-large;
+    width: 200px;
+    max-height: calc(100vh - #{$header-height} - #{$spacing-large} * 2);
+    overflow-y: auto;
+    padding-left: $spacing-base;
+    border-left: 1px solid $preview-toc-border-color;
+
+    .toc-list {
+      .toc-item {
+        display: block;
+        padding: $spacing-small 0;
+        color: $preview-toc-color;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: pointer;
+        transition: color $transition-duration-base;
+
+        &:hover {
+          color: $preview-toc-hover-color;
+        }
+
+        &.active {
+          color: $preview-toc-active-color;
+        }
+
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
+
+        .toc-children {
+          padding-left: $spacing-base;
+        }
+      }
+    }
+  }
+
+  // 响应式布局
+  @include media-breakpoint-down(lg) {
+    &-anchor,
+    &-toc {
+      display: none;
+    }
+  }
+}

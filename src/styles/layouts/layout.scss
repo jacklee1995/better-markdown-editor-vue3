@@ -1,0 +1,170 @@
+@import '../variables';
+@import '../mixins';
+
+// 布局样式
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+
+  // 头部样式
+  &-header {
+    height: $header-height;
+    background-color: $header-background-color;
+    color: $header-text-color;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 $spacing-large;
+    box-shadow: $header-box-shadow;
+    z-index: $header-z-index;
+
+    &-left,
+    &-right {
+      display: flex;
+      align-items: center;
+    }
+
+    &-logo {
+      font-size: $header-logo-font-size;
+      font-weight: bold;
+    }
+
+    &-nav {
+      margin-left: $spacing-large;
+
+      ul {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          margin-right: $spacing-base;
+
+          a {
+            color: $header-nav-color;
+            text-decoration: none;
+            transition: color $transition-duration-base;
+
+            &:hover {
+              color: $header-nav-hover-color;
+            }
+
+            &.active {
+              color: $header-nav-active-color;
+            }
+          }
+        }
+      }
+    }
+
+    &-actions {
+      .action-item {
+        margin-left: $spacing-base;
+        cursor: pointer;
+        transition: color $transition-duration-base;
+
+        &:hover {
+          color: $header-action-hover-color;
+        }
+      }
+    }
+  }
+
+  // 主体样式
+  &-main {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+
+    // 侧边栏样式
+    &-sidebar {
+      width: $sidebar-width;
+      background-color: $sidebar-background-color;
+      color: $sidebar-text-color;
+      overflow-y: auto;
+      transition: width $transition-duration-base;
+
+      &.collapsed {
+        width: $sidebar-collapsed-width;
+      }
+
+      &-header {
+        height: $sidebar-header-height;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 $spacing-base;
+        border-bottom: 1px solid $sidebar-header-border-color;
+      }
+
+      &-menu {
+        margin-top: $spacing-base;
+
+        .menu-item {
+          display: flex;
+          align-items: center;
+          padding: $spacing-small $spacing-base;
+          cursor: pointer;
+          transition: background-color $transition-duration-base;
+
+          &:hover {
+            background-color: $sidebar-menu-hover-background-color;
+          }
+
+          &.active {
+            background-color: $sidebar-menu-active-background-color;
+            color: $sidebar-menu-active-color;
+          }
+
+          .icon {
+            margin-right: $spacing-small;
+          }
+        }
+      }
+    }
+
+    // 内容区样式
+    &-content {
+      flex: 1;
+      padding: $spacing-large;
+      overflow-y: auto;
+    }
+  }
+
+  // 底部样式
+  &-footer {
+    height: $footer-height;
+    background-color: $footer-background-color;
+    color: $footer-text-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid $footer-border-color;
+  }
+}
+
+// 响应式布局
+@include media-breakpoint-down(md) {
+  .layout {
+    &-header {
+      &-nav {
+        display: none;
+      }
+    }
+
+    &-main {
+      &-sidebar {
+        position: absolute;
+        left: -$sidebar-width;
+        transition: left $transition-duration-base;
+
+        &.open {
+          left: 0;
+        }
+      }
+    }
+  }
+}

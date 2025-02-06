@@ -1,0 +1,131 @@
+@import '../variables';
+@import '../mixins';
+
+// 时间选择器样式
+.timepicker {
+  display: inline-block;
+  position: relative;
+
+  // 输入框样式
+  &-input {
+    display: inline-block;
+    width: 200px;
+    height: $input-height;
+    padding: 0 $spacing-base;
+    font-size: $font-size-base;
+    color: $text-color;
+    background-color: $input-background-color;
+    border: 1px solid $border-color-base;
+    border-radius: $border-radius-base;
+    outline: none;
+    transition: border-color $transition-duration-base;
+
+    &:hover {
+      border-color: $border-color-hover;
+    }
+
+    &:focus {
+      border-color: $color-primary;
+    }
+
+    &[disabled] {
+      color: $disabled-color;
+      background-color: $disabled-background-color;
+      border-color: $border-color-base;
+      cursor: not-allowed;
+    }
+  }
+
+  // 下拉面板样式
+  &-panel {
+    position: absolute;
+    top: $input-height + $spacing-small;
+    left: 0;
+    z-index: $index-popper;
+    width: 200px;
+    padding: $spacing-base;
+    background-color: $background-color-base;
+    border: 1px solid $border-color-base;
+    border-radius: $border-radius-base;
+    box-shadow: $box-shadow-base;
+
+    // 时间列表样式
+    &-list {
+      max-height: 200px;
+      overflow-y: auto;
+      font-size: $font-size-base;
+      color: $text-color;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        padding: $spacing-small $spacing-base;
+        cursor: pointer;
+        transition: background-color $transition-duration-base;
+
+        &:hover {
+          background-color: $background-color-hover;
+        }
+
+        &.active {
+          color: $color-primary;
+          font-weight: bold;
+        }
+
+        &.disabled {
+          color: $disabled-color;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+
+  // 范围选择器样式
+  &-range {
+    display: inline-flex;
+
+    .timepicker {
+      margin-right: $spacing-base;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    .timepicker-separator {
+      display: inline-block;
+      margin: 0 $spacing-small;
+      color: $text-color-secondary;
+    }
+  }
+
+  // 不同尺寸样式
+  &-small {
+    .timepicker-input {
+      width: 160px;
+      height: $input-height-small;
+      font-size: $font-size-small;
+    }
+
+    .timepicker-panel {
+      top: $input-height-small + $spacing-small;
+      width: 160px;
+      font-size: $font-size-small;
+    }
+  }
+
+  &-large {
+    .timepicker-input {
+      width: 240px;
+      height: $input-height-large;
+      font-size: $font-size-large;
+    }
+
+    .timepicker-panel {
+      top: $input-height-large + $spacing-small;
+      width: 240px;
+      font-size: $font-size-large;
+    }
+  }
+}

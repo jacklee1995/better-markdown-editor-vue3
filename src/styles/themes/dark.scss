@@ -1,0 +1,187 @@
+// src/styles/themes/dark.scss
+
+// 暗色主题变量
+$theme-dark: (
+  // 背景色
+  bg-color: #141414,
+  bg-color-light: #1f1f1f,
+  bg-color-lighter: #282828,
+
+  // 文本颜色
+  text-color: #e0e0e0,
+  text-color-light: #a0a0a0,
+  text-color-lighter: #777,
+
+  // 边框颜色
+  border-color: #3a3a3a,
+  border-color-light: #4c4c4c,
+  border-color-lighter: #616161,
+
+  // 阴影颜色
+  shadow-color: rgba(0, 0, 0, 0.2),
+  // 主色调
+  primary-color: #bb86fc,
+  primary-color-light: #c29ffc,
+  primary-color-lighter: #cbbbfc,
+
+  // 成功色调
+  success-color: #03dac6,
+  success-color-light: #21e6d4,
+  success-color-lighter: #4dede2,
+
+  // 警告色调
+  warning-color: #ffb74d,
+  warning-color-light: #ffca28,
+  warning-color-lighter: #ffd54f,
+
+  // 危险色调
+  danger-color: #cf6679,
+  danger-color-light: #ed7c91,
+  danger-color-lighter: #f3a5b5,
+
+  // 信息色调
+  info-color: #b39ddb,
+  info-color-light: #c1ade5,
+  info-color-lighter: #d1c4e9
+);
+
+// 暗色主题样式
+.theme-dark {
+  // 背景色
+  .bg-color {
+    background-color: map-get($theme-dark, bg-color);
+  }
+  .bg-color-light {
+    background-color: map-get($theme-dark, bg-color-light);
+  }
+  .bg-color-lighter {
+    background-color: map-get($theme-dark, bg-color-lighter);
+  }
+
+  // 文本颜色
+  .text-color {
+    color: map-get($theme-dark, text-color);
+  }
+  .text-color-light {
+    color: map-get($theme-dark, text-color-light);
+  }
+  .text-color-lighter {
+    color: map-get($theme-dark, text-color-lighter);
+  }
+
+  // 边框颜色
+  .border-color {
+    border-color: map-get($theme-dark, border-color);
+  }
+  .border-color-light {
+    border-color: map-get($theme-dark, border-color-light);
+  }
+  .border-color-lighter {
+    border-color: map-get($theme-dark, border-color-lighter);
+  }
+
+  // 阴影颜色
+  .shadow {
+    box-shadow: 0 2px 12px 0 map-get($theme-dark, shadow-color);
+  }
+
+  // 主色调
+  .primary-color {
+    color: map-get($theme-dark, primary-color);
+  }
+  .primary-color-light {
+    color: map-get($theme-dark, primary-color-light);
+  }
+  .primary-color-lighter {
+    color: map-get($theme-dark, primary-color-lighter);
+  }
+  .bg-primary-color {
+    background-color: map-get($theme-dark, primary-color);
+  }
+  .bg-primary-color-light {
+    background-color: map-get($theme-dark, primary-color-light);
+  }
+  .bg-primary-color-lighter {
+    background-color: map-get($theme-dark, primary-color-lighter);
+  }
+
+  // 成功色调
+  .success-color {
+    color: map-get($theme-dark, success-color);
+  }
+  .success-color-light {
+    color: map-get($theme-dark, success-color-light);
+  }
+  .success-color-lighter {
+    color: map-get($theme-dark, success-color-lighter);
+  }
+  .bg-success-color {
+    background-color: map-get($theme-dark, success-color);
+  }
+  .bg-success-color-light {
+    background-color: map-get($theme-dark, success-color-light);
+  }
+  .bg-success-color-lighter {
+    background-color: map-get($theme-dark, success-color-lighter);
+  }
+
+  // 警告色调
+  .warning-color {
+    color: map-get($theme-dark, warning-color);
+  }
+  .warning-color-light {
+    color: map-get($theme-dark, warning-color-light);
+  }
+  .warning-color-lighter {
+    color: map-get($theme-dark, warning-color-lighter);
+  }
+  .bg-warning-color {
+    background-color: map-get($theme-dark, warning-color);
+  }
+  .bg-warning-color-light {
+    background-color: map-get($theme-dark, warning-color-light);
+  }
+  .bg-warning-color-lighter {
+    background-color: map-get($theme-dark, warning-color-lighter);
+  }
+
+  // 危险色调
+  .danger-color {
+    color: map-get($theme-dark, danger-color);
+  }
+  .danger-color-light {
+    color: map-get($theme-dark, danger-color-light);
+  }
+  .danger-color-lighter {
+    color: map-get($theme-dark, danger-color-lighter);
+  }
+  .bg-danger-color {
+    background-color: map-get($theme-dark, danger-color);
+  }
+  .bg-danger-color-light {
+    background-color: map-get($theme-dark, danger-color-light);
+  }
+  .bg-danger-color-lighter {
+    background-color: map-get($theme-dark, danger-color-lighter);
+  }
+
+  // 信息色调
+  .info-color {
+    color: map-get($theme-dark, info-color);
+  }
+  .info-color-light {
+    color: map-get($theme-dark, info-color-light);
+  }
+  .info-color-lighter {
+    color: map-get($theme-dark, info-color-lighter);
+  }
+  .bg-info-color {
+    background-color: map-get($theme-dark, info-color);
+  }
+  .bg-info-color-light {
+    background-color: map-get($theme-dark, info-color-light);
+  }
+  .bg-info-color-lighter {
+    background-color: map-get($theme-dark, info-color-lighter);
+  }
+}
