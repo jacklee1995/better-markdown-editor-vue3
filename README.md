@@ -1,6 +1,6 @@
 # better-markdown
 
-This template should help get you started developing with Vue 3 in Vite.
+这是一个还在开发的编辑器项目。
 
 ## Recommended IDE Setup
 
@@ -43,4 +43,3 @@ pnpm test:unit
 ```sh
 pnpm lint
 ```
-
