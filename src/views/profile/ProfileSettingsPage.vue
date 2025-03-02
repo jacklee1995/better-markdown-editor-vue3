@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
+import { reactive } from 'vue'
 import { useProfileStore } from '@/store/profile'
 
 const profileStore = useProfileStore()

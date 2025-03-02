@@ -8,7 +8,12 @@ import routes from '@/router/routes'
 import { useEditorStore, useThemeStore, usePluginStore } from '@/store'
 import { loadPlugins } from './core/plugin'
 import { setTheme } from './core/theme'
+import env from '@/config/env'
 import './styles/index.scss'
+
+// 输出环境信息
+console.log(`App running in ${env.mode} mode`)
+console.log(`Login redirect path: ${env.loginRedirect}`)
 
 async function bootstrap() {
   // 创建 Vue 应用实例

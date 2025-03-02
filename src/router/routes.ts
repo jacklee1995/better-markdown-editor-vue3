@@ -18,6 +18,10 @@ const routes: RouteRecordRaw[] = [
     name: RouteNames.Root,
     redirect: RoutePaths.Home,
   },
+  {
+    path: '/signup',
+    redirect: '/register',
+  },
   ...homeRoutes,
   ...aboutRoutes,
   ...errorRoutes,

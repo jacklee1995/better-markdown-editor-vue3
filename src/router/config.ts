@@ -1,4 +1,4 @@
-import type { RouteLocationNormalized, RouteRecordRaw } from 'vue-router'
+import type { RouteLocationNormalized, RouteRecordRaw, RouterScrollBehavior } from 'vue-router'
 import { RoutePaths, RouteNames, RouteMeta } from './constants'
 
 export interface RouterConfig {
@@ -36,11 +36,7 @@ export interface RouterConfig {
   /**
    * 在页面之间导航时控制滚动的函数
    */
-  scrollBehavior?: (
-    to: RouteLocationNormalized,
-    from: RouteLocationNormalized,
-    savedPosition: { x: number; y: number } | null,
-  ) => ScrollBehavior | Promise<ScrollBehavior> | undefined | null
+  scrollBehavior?: RouterScrollBehavior
 
   /**
    * 路由记录数组
@@ -261,6 +257,13 @@ const config: RouterConfig = {
   cache: true,
   cacheKey: 'cache:routes',
   cacheDuration: 1800,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return { top: 0 };
+    }
+  },
 }
 
 export default config

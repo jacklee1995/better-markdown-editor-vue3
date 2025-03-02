@@ -450,6 +450,11 @@ export enum RoutePaths {
    * 503 服务不可用页面
    */
   ServiceUnavailable = '/service-unavailable',
+
+  /**
+   * 注册页面
+   */
+  Signup = '/signup',
 }
 
 /**

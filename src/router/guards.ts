@@ -1,7 +1,7 @@
 // src/router/guards.ts
 
-import type { NavigationGuard } from 'vue-router'
-import { useAuthStore } from '@/store/auth'
+import type { NavigationGuard, NavigationHookAfter } from 'vue-router'
+import { useAuthStore } from '@/store/modules/auth'
 import { useSettingsStore } from '@/store/modules/settings'
 import { RouteMeta, RouteNames } from './constants'
 
@@ -70,7 +70,6 @@ export const progressGuard: NavigationGuard = (to, from, next) => {
  * 滚动守卫
  * 在路由跳转后将页面滚动到顶部
  */
-export const scrollGuard: NavigationGuard = (to, from, next) => {
+export const scrollGuard: NavigationHookAfter = (to, from) => {
   window.scrollTo(0, 0)
-  next()
 }

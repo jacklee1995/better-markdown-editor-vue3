@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import type { RouteRecordRaw } from 'vue-router'
 import config from './config'
 import { authGuard, adminGuard, titleGuard, progressGuard, scrollGuard } from './guards'
 import {
@@ -10,20 +9,14 @@ import {
   scrollInterceptor,
   cacheInterceptor,
   permissionInterceptor,
+  routeInterceptors,
+  routeAfterInterceptors
 } from './interceptors'
-
-const routes: RouteRecordRaw[] = [
-  {
-    path: '/',
-    name: 'home',
-    component: () => import('@/views/home/HomePage.vue'),
-  },
-  // 添加其他路由配置...
-]
+import routeConfig from './routes'
 
 const router = createRouter({
   history: createWebHistory(config.base),
-  routes,
+  routes: routeConfig,
   strict: config.strict,
   sensitive: config.sensitive,
   scrollBehavior: config.scrollBehavior,
@@ -44,5 +37,15 @@ router.beforeEach(progressInterceptor)
 router.afterEach(scrollInterceptor)
 router.beforeEach(cacheInterceptor)
 router.beforeEach(permissionInterceptor)
+
+// Register route-specific interceptors
+routeInterceptors.forEach(interceptor => {
+  router.beforeEach(interceptor)
+})
+
+// Register route-specific after interceptors
+routeAfterInterceptors.forEach(interceptor => {
+  router.afterEach(interceptor)
+})
 
 export default router

@@ -1,9 +1,10 @@
 // src/router/interceptors.ts
 
-import type { NavigationGuard } from 'vue-router'
-import { useAuthStore } from '@/store/auth'
+import type { NavigationGuard, NavigationHookAfter } from 'vue-router'
+import { useAuthStore } from '@/store/modules/auth'
 import { useSettingsStore } from '@/store/modules/settings'
 import { RouteMeta, RouteNames } from './constants'
+import authConfig from '@/config/auth'
 
 /**
  * 身份验证拦截器
@@ -14,7 +15,7 @@ export const authInterceptor: NavigationGuard = (to, from, next) => {
   const requiresAuth = to.meta[RouteMeta.RequiresAuth] as boolean | undefined
 
   if (requiresAuth && !authStore.isLoggedIn) {
-    next({ name: RouteNames.Login, query: { redirect: to.fullPath } })
+    next({ path: authConfig.unauthorizedRedirect, query: { redirect: to.fullPath } })
   } else {
     next()
   }
@@ -70,9 +71,8 @@ export const progressInterceptor: NavigationGuard = (to, from, next) => {
  * 滚动拦截器
  * 在路由跳转后将页面滚动到顶部
  */
-export const scrollInterceptor: NavigationGuard = (to, from, next) => {
+export const scrollInterceptor: NavigationHookAfter = (to, from) => {
   window.scrollTo(0, 0)
-  next()
 }
 
 /**
@@ -115,7 +115,13 @@ export const routeInterceptors: NavigationGuard[] = [
   adminInterceptor,
   titleInterceptor,
   progressInterceptor,
-  scrollInterceptor,
   cacheInterceptor,
   permissionInterceptor,
+]
+
+/**
+ * 路由后置拦截器列表
+ */
+export const routeAfterInterceptors: NavigationHookAfter[] = [
+  scrollInterceptor
 ]

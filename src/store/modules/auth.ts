@@ -1,4 +1,7 @@
 import { defineStore } from 'pinia'
+import authConfig from '@/config/auth'
+import env from '@/config/env'
+import { useRouter } from 'vue-router'
 
 export interface AuthState {
   token: string | null
@@ -45,6 +48,11 @@ export const useAuthStore = defineStore('auth', {
         roles: ['admin'],
         permissions: ['read', 'write', 'delete'],
       }
+
+      const router = useRouter()
+      const redirectPath = router.currentRoute.value.query.redirect as string || authConfig.loginRedirect
+      console.log(`Redirecting to: ${redirectPath}`)
+      router.push(redirectPath)
     },
 
     async logout() {

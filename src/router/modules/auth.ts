@@ -5,6 +5,10 @@ import { RoutePaths, RouteNames, RouteMeta } from '../constants'
 
 const routes: RouteRecordRaw[] = [
   {
+    path: '/signup',
+    redirect: RoutePaths.Register,
+  },
+  {
     path: RoutePaths.Login,
     name: RouteNames.Login,
     component: () => import('@/views/auth/LoginPage.vue'),
