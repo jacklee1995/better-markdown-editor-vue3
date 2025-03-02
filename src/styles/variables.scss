@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 // 颜色变量
 $color-primary: #409eff;
 $color-success: #67c23a;
@@ -33,6 +35,7 @@ $font-weight-bold: 700;
 // 行高变量
 $line-height-primary: 24px;
 $line-height-secondary: 16px;
+$line-height-base: 1.5;
 
 // 圆角变量
 $border-radius-base: 4px;
@@ -80,49 +83,488 @@ $--lg: $screen-lg;
 $--xl: $screen-xl;
 
 $--breakpoints: (
-  'xs': (
-    max-width: $screen-xs,
-  ),
-  'sm': (
-    min-width: $screen-sm,
-  ),
-  'md': (
-    min-width: $screen-md,
-  ),
-  'lg': (
-    min-width: $screen-lg,
-  ),
-  'xl': (
-    min-width: $screen-xl,
-  ),
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
 );
 
 $--breakpoints-spec: (
-  'xs-only': (
-    max-width: $screen-xs,
-  ),
-  'sm-and-up': (
-    min-width: $screen-sm,
-  ),
-  'sm-only': '(min-width: #{$screen-sm}) and (max-width: #{$screen-md - 1})',
-  'sm-and-down': (
-    max-width: $screen-md - 1,
-  ),
-  'md-and-up': (
-    min-width: $screen-md,
-  ),
-  'md-only': '(min-width: #{$screen-md}) and (max-width: #{$screen-lg - 1})',
-  'md-and-down': (
-    max-width: $screen-lg - 1,
-  ),
-  'lg-and-up': (
-    min-width: $screen-lg,
-  ),
-  'lg-only': '(min-width: #{$screen-lg}) and (max-width: #{$screen-xl - 1})',
-  'lg-and-down': (
-    max-width: $screen-xl - 1,
-  ),
-  'xl-only': (
-    min-width: $screen-xl,
-  ),
+  xs-only: "(max-width: 575.98px)",
+  sm-and-up: "(min-width: 576px)",
+  sm-only: "(min-width: 576px) and (max-width: 767.98px)",
+  sm-and-down: "(max-width: 767.98px)",
+  md-and-up: "(min-width: 768px)",
+  md-only: "(min-width: 768px) and (max-width: 991.98px)",
+  md-and-down: "(max-width: 991.98px)",
+  lg-and-up: "(min-width: 992px)",
+  lg-only: "(min-width: 992px) and (max-width: 1199.98px)",
+  lg-and-down: "(max-width: 1199.98px)",
+  xl-and-up: "(min-width: 1200px)",
+  xl-only: "(min-width: 1200px) and (max-width: 1399.98px)",
+  xl-and-down: "(max-width: 1399.98px)",
+  xxl-only: "(min-width: 1400px)"
+);
+
+// 布局变量
+$header-height: 60px;
+$footer-height: 60px;
+$sidebar-width: 240px;
+$content-padding: 24px;
+
+// 工具栏高度
+$toolbar-height: 40px;
+
+// 侧边栏宽度
+$sidebar-width: 240px;
+$sidebar-collapsed-width: 64px;
+
+// 过渡动画
+$transition-duration-base: 0.3s;
+$transition-duration-fast: 0.2s;
+
+// 文字颜色
+$text-color-primary: $color-text-primary;
+$text-color-regular: $color-text-regular;
+$text-color-secondary: $color-text-secondary;
+$text-color-placeholder: $color-text-placeholder;
+
+// 网格布局变量
+$grid-columns: 12;
+$grid-gutter-width: 20px;
+
+// 网格断点变量
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+// 预览区域背景色
+$preview-background-color: #f8f8f8;
+
+// 菜单项图标颜色
+$menu-item-icon-color: #909399;
+$menu-item-icon-active-color: #409eff;
+
+// 选项卡相关变量
+$tabs-header-background-color: #f5f7fa;
+$tabs-header-active-color: #409eff;
+$tabs-content-background-color: #ffffff;
+
+// 表格相关变量
+$table-header-background-color: #f5f7fa;
+$table-row-hover-background-color: #f5f7fa;
+$table-row-selected-background-color: #e6f7ff;
+
+// 菜单组件变量
+$menu-background-color: #ffffff;
+$menu-text-color: #303133;
+$menu-active-text-color: #409eff;
+$menu-hover-text-color: $color-primary;
+$menu-hover-background-color: #ecf5ff;
+$submenu-background-color: #ffffff;
+$submenu-hover-background-color: #ecf5ff;
+$menu-border-color: #e6e6e6;
+$menu-item-height: 56px;
+$menu-item-font-size: 14px;
+$menu-item-icon-size: 20px;
+$menu-item-arrow-size: 16px;
+$menu-dark-background-color: #001529;
+$menu-dark-border-color: #101117;
+$menu-dark-item-text-color: rgba(255,255,255,.65);
+$menu-dark-item-hover-text-color: #ffffff;
+$menu-dark-item-hover-background-color: #000c17;
+$menu-dark-item-active-text-color: #ffffff;
+$menu-dark-item-active-background-color: $color-primary;
+$menu-dark-item-disabled-text-color: rgba(255,255,255,.25);
+$menu-dark-item-disabled-background-color: transparent;
+$menu-item-text-color: #606266;
+$menu-item-active-text-color: $color-primary;
+$menu-item-active-background-color: #e6f7ff;
+$menu-item-disabled-text-color: #c0c4cc;
+$menu-item-disabled-background-color: #f5f7fa;
+$menu-collapsed-width: 64px;
+
+// 分页组件变量
+$pagination-font-size: 14px;
+$pagination-background-color: #ffffff;
+$pagination-active-color: #409eff;
+$pagination-active-background-color: #409eff;
+$pagination-hover-color: #409eff;
+$pagination-hover-background-color: #f4f4f5;
+
+// 输入框组件变量
+$input-font-size: 14px;
+$input-background-color: #ffffff;
+$input-border-color: #dcdfe6;
+$input-hover-border-color: #c0c4cc;
+$input-focus-border-color: #409eff;
+$input-placeholder-color: #c0c4cc;
+
+// 日期选择器组件变量
+$datepicker-font-size: 14px;
+$datepicker-background-color: #ffffff;
+$datepicker-hover-background-color: #f5f7fa;
+$datepicker-active-color: #409eff;
+$datepicker-active-background-color: #409eff;
+
+// 头像组件变量
+$avatar-font-size: 14px;
+$avatar-background-color: #c0c4cc;
+$avatar-color: #ffffff;
+$avatar-border-radius: 50%;
+$avatar-large-size: 40px;
+$avatar-medium-size: 36px;
+$avatar-small-size: 28px;
+
+// 回到顶部组件变量
+$backtop-background-color: #409eff;
+$backtop-text-color: #ffffff;
+$backtop-hover-background-color: #66b1ff;
+
+// 面包屑组件变量
+$breadcrumb-font-size: 14px;
+$breadcrumb-separator-color: #c0c4cc;
+$breadcrumb-link-color: #606266;
+$breadcrumb-link-hover-color: #409eff;
+
+// 折叠面板组件变量
+$collapse-header-height: 48px;
+$collapse-header-padding: 20px;
+$collapse-header-fill: #fff;
+$collapse-header-color: #303133;
+$collapse-header-size: 13px;
+$collapse-content-padding: 15px 20px;
+$collapse-content-fill: #f7f7f7;
+$collapse-content-color: #303133;
+$collapse-content-size: 13px;
+
+// 抽屉组件变量
+$drawer-header-padding: 20px;
+$drawer-body-padding: 20px;
+$drawer-footer-padding: 10px 20px;
+$drawer-header-close-size: 18px;
+
+// 下拉菜单组件变量
+$dropdown-menu-box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+$dropdown-menuItem-hover-fill: #f5f7fa;
+$dropdown-menuItem-hover-color: #66b1ff;
+
+// 树形控件组件变量
+$tree-node-hover-background-color: #f5f7fa;
+$tree-node-selected-background-color: #f0f7ff;
+
+// 时间选择器组件变量
+$timepicker-font-size: 14px;
+$timepicker-picker-panel-width: 180px;
+$timepicker-panel-header-height: 40px;
+$timepicker-panel-body-height: 200px;
+$timepicker-panel-item-height: 30px;
+$timepicker-panel-item-hover-background-color: #f5f7fa;
+
+// 选择框组件变量
+$select-background-color: #ffffff;
+$select-border-color: #dcdfe6;
+$select-hover-border-color: #c0c4cc;
+$select-focus-border-color: $color-primary;
+$select-font-size: 14px;
+$select-line-height: 40px;
+$select-font-color: #606266;
+$select-placeholder-color: #c0c4cc;
+$select-arrow-color: #c0c4cc;
+$select-arrow-size: 14px;
+$select-arrow-margin: 10px;
+$select-dropdown-background-color: #ffffff;
+$select-dropdown-border-color: #e4e7ed;
+$select-dropdown-max-height: 274px;
+$select-option-hover-background-color: #f5f7fa;
+$select-option-selected-font-color: $color-primary;
+$select-option-selected-background-color: #f5f7fa;
+$select-option-disabled-font-color: #c0c4cc;
+$select-option-disabled-background-color: #ffffff;
+$select-group-title-font-color: #909399;
+$select-group-title-font-size: 12px;
+
+// 侧边栏组件变量
+$sidebar-background-color: #ffffff;
+$sidebar-text-color: #303133;
+$sidebar-header-height: 60px;
+$sidebar-logo-font-size: 20px;
+$sidebar-header-border-color: #e6e6e6;
+$sidebar-menu-item-height: 50px;
+$sidebar-menu-item-hover-background-color: #f0f7ff;
+$sidebar-menu-item-active-background-color: #e6f7ff;
+$sidebar-menu-item-active-text-color: $color-primary;
+$sidebar-menu-item-icon-size: 16px;
+$sidebar-submenu-background-color: #f4f4f5;
+$sidebar-dark-background-color: #191a23;
+$sidebar-dark-text-color: #ffffff;
+$sidebar-dark-header-border-color: #101117;
+$sidebar-dark-menu-item-hover-background-color: #434343;
+$sidebar-dark-menu-item-active-background-color: $color-primary;
+$sidebar-dark-menu-item-active-text-color: #ffffff;
+$sidebar-dark-submenu-background-color: #000000;
+$sidebar-menu-item-icon-margin-right: 10px;
+
+// 状态栏组件变量
+$statusbar-height: 24px;
+$statusbar-background-color: #ffffff;
+$statusbar-text-color: #606266;
+$statusbar-text-hover-color: $color-primary;
+$statusbar-background-color-dark: #191a23;
+$statusbar-text-color-dark: #e1e1e1;
+$statusbar-text-hover-color-dark: #ffffff;
+$statusbar-height-sm: 20px;
+
+// 头部样式变量
+$header-background-color: #ffffff;
+$header-text-color: #303133;
+$header-height: 60px;
+$header-padding: 0 20px;
+$header-z-index: 1000;
+
+// Logo 样式变量
+$header-logo-font-size: 20px;
+$header-logo-color: #333333;
+$header-logo-hover-color: $color-primary;
+
+// 导航样式变量
+$header-nav-color: #606266;
+$header-nav-hover-color: $color-primary;
+$header-nav-active-color: $color-primary;
+
+// 工具栏样式变量
+$header-toolbar-hover-color: $color-primary;
+
+// 用户信息样式变量
+$header-user-font-size: 14px;
+$header-user-avatar-size: 32px;
+
+// 头部操作按钮样式变量
+$header-action-hover-color: $color-primary;
+$header-action-active-color: color.adjust($color-primary, $lightness: -10%);
+
+// 侧边栏样式变量
+$sidebar-background-color: #ffffff;
+$sidebar-text-color: #303133;
+$sidebar-header-height: 60px;
+$sidebar-header-padding: 0 20px;
+$sidebar-header-border-color: #e6e6e6;
+$sidebar-menu-item-height: 50px;
+$sidebar-menu-item-padding: 0 20px;
+$sidebar-menu-item-hover-background-color: #ecf5ff;
+$sidebar-menu-item-active-background-color: #ecf5ff;
+$sidebar-menu-item-active-text-color: $color-primary;
+$sidebar-menu-item-icon-size: 16px;
+$sidebar-submenu-background-color: #f4f4f5;
+
+// 底部样式变量
+$footer-height: 60px;
+$footer-padding: 0 20px;
+$footer-background-color: #f8f8f8;
+$footer-text-color: #606266;
+$footer-border-color: #e6e6e6;
+
+// 头部阴影变量
+$header-box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+
+// 工具栏变量
+$toolbar-background-color: #ffffff;
+$toolbar-item-color: #606266;
+$toolbar-item-hover-color: $color-primary;
+$toolbar-item-active-color: $color-primary;
+
+// 编辑器变量
+$editor-background-color: #ffffff;
+$editor-font-size: 14px;
+$editor-line-height: 1.5;
+$editor-color: #606266;
+$editor-border-color: #dcdfe6;
+$editor-border-radius: 4px;
+$editor-padding: 10px;
+
+// 预览区变量
+$preview-padding: 20px;
+
+// 侧边栏菜单项变量
+$sidebar-menu-hover-background-color: #f0f7ff;
+$sidebar-menu-active-background-color: #e6f7ff;
+$sidebar-menu-active-text-color: $color-primary;
+$sidebar-menu-item-icon-margin-right: 10px;
+$sidebar-menu-active-color: $color-primary;
+
+// 头部 Logo 响应式字体大小
+$header-logo-font-size-sm: 16px;
+
+// 头部用户头像响应式大小
+$header-user-avatar-size-sm: 24px;
+
+// 底部链接颜色
+$footer-link-color: #606266;
+$footer-link-hover-color: $color-primary;
+
+// 底部图标颜色
+$footer-icon-color: #606266;
+$footer-icon-hover-color: $color-primary;
+$footer-icon-size: 16px;
+
+// 菜单项变量
+$menu-item-hover-text-color: $color-primary;
+$menu-item-hover-background-color: #ecf5ff;
+
+// 基础颜色变量
+$color-white: #ffffff;
+
+// 表格相关变量
+$table-background-color: #ffffff;
+$table-font-size: 14px;
+$table-text-color: #606266;
+$table-header-font-weight: 500;
+$table-header-text-align: left;
+$table-header-border-bottom: 1px solid $border-color-base;
+$table-cell-padding: 12px;
+$table-cell-border-bottom: 1px solid $border-color-base;
+$table-striped-background-color: #fafafa;
+$table-border: 1px solid $border-color-base;
+$table-compact-cell-padding: 8px;
+$table-expand-content-background-color: #f5f7fa;
+$table-sort-icon-active-color: $color-primary;
+$table-sort-active-text-color: $color-primary;
+$table-sort-active-background-color: #f5f7fa;
+
+// 预览区相关变量
+$preview-bg-color: #ffffff;
+$preview-action-color: #606266;
+$preview-action-hover-color: $color-primary;
+$preview-heading-color: #303133;
+$preview-heading-anchor-hover-color: $color-primary;
+$preview-blockquote-color: #666666;
+$preview-blockquote-border-color: #e6e6e6;
+$preview-blockquote-bg-color: #f8f8f8;
+$preview-code-color: #c7254e;
+$preview-code-bg-color: #f9f2f4;
+$preview-table-border-color: #e6e6e6;
+$preview-table-header-bg-color: #f5f7fa;
+$preview-table-row-bg-color: #fafafa;
+$preview-hr-color: #e6e6e6;
+$preview-footer-color: #999999;
+$preview-anchor-border-color: #e6e6e6;
+$preview-anchor-color: #666666;
+$preview-anchor-hover-color: $color-primary;
+$preview-anchor-active-color: $color-primary;
+$preview-toc-border-color: #e6e6e6;
+$preview-toc-color: #666666;
+$preview-toc-hover-color: $color-primary;
+$preview-toc-active-color: $color-primary;
+
+// 颜色映射
+$colors: (
+  primary: $color-primary,
+  success: $color-success,
+  warning: $color-warning,
+  danger: $color-danger,
+  info: $color-info,
+  white: $color-white,
+  text-primary: $color-text-primary,
+  text-regular: $color-text-regular,
+  text-secondary: $color-text-secondary,
+  text-placeholder: $color-text-placeholder,
+  border-base: $border-color-base,
+  border-light: $border-color-light,
+  border-lighter: $border-color-lighter,
+  border-extra-light: $border-color-extra-light,
+  background-base: $background-color-base
+);
+
+// 透明度变量
+$opacities: (
+  0: 0,
+  25: 0.25,
+  50: 0.5,
+  75: 0.75,
+  100: 1
+);
+
+// 添加缺失的阴影变量
+$box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$box-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$black: #000000;
+$primary: $color-primary;
+
+// 阴影映射
+$shadows: (
+  sm: $box-shadow-sm,
+  base: $box-shadow-base,
+  lg: $box-shadow-lg,
+  none: none
+);
+
+// 添加缺失的字体变量
+$font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+  Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+  'Noto Color Emoji';
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+  'Courier New', monospace;
+$font-size-root: 16px;
+$font-weight-base: 400;
+
+// 添加缺失的断点变量
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+// 添加缺失的z-index变量
+$z-indexes: (
+  dropdown: 1000,
+  sticky: 1020,
+  fixed: 1030,
+  modal-backdrop: 1040,
+  modal: 1050,
+  popover: 1060,
+  tooltip: 1070
+);
+
+// 添加缺失的过渡时间变量
+$transition-duration-base: 0.3s;
+
+// 添加尺寸变量
+$sizes: (
+  25: 25%,
+  50: 50%,
+  75: 75%,
+  100: 100%,
+  auto: auto
+);
+
+// 添加滚动条相关变量
+$scrollbar-thumb-bg-color: rgba(0, 0, 0, 0.3);
+$scrollbar-thumb-hover-bg-color: rgba(0, 0, 0, 0.5);
+$scrollbar-track-bg-color: rgba(0, 0, 0, 0.1);
+
+// 添加选中文本相关变量
+$selection-text-color: #ffffff;
+$selection-bg-color: $color-primary;
+
+// 添加白色变量
+$color-white: #ffffff;
+
+// 添加网格断点变量
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
 );

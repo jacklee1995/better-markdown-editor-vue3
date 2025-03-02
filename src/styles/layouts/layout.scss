@@ -1,5 +1,5 @@
-@import '../variables';
-@import '../mixins';
+@use '../variables' as *;
+@use '../mixins' as *;
 
 // 布局样式
 .layout {
@@ -29,6 +29,16 @@
     &-logo {
       font-size: $header-logo-font-size;
       font-weight: bold;
+
+      a {
+        color: $header-logo-color;
+        text-decoration: none;
+        transition: color $transition-duration-base;
+
+        &:hover {
+          color: $header-logo-hover-color;
+        }
+      }
     }
 
     &-nav {

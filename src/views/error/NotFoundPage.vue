@@ -17,11 +17,17 @@ function goHome() {
     <h1 class="error-code">404</h1>
     <p class="error-message">Page Not Found</p>
     <p class="error-description">The page you are looking for does not exist.</p>
+    <div class="action-buttons">
+      <button @click="goBack" class="action-button">Go Back</button>
+      <button @click="goHome" class="action-button">Go Home</button>
+    </div>
     <router-link to="/" class="back-link">Go back to home</router-link>
   </div>
 </template>
 
 <style lang="scss" scoped>
+@use 'sass:color';
+
 .not-found-page {
   display: flex;
   flex-direction: column;
@@ -49,6 +55,26 @@ function goHome() {
     margin-bottom: 2rem;
   }
 
+  .action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .action-button {
+    padding: 0.5rem 1rem;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: #e0e0e0;
+    }
+  }
+
   .back-link {
     font-size: 1.2rem;
     color: #007aff;
@@ -56,7 +82,7 @@ function goHome() {
     transition: color 0.3s;
 
     &:hover {
-      color: darken(#007aff, 10%);
+      color: color.adjust(#007aff, $lightness: -10%);
     }
   }
 }

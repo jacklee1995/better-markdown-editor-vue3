@@ -1,3 +1,8 @@
+@use 'sass:map';
+@use '../variables' as *;
+@use '../mixins' as *;
+@use '../functions' as *;
+
 // 尺寸工具类
 
 // 宽度
@@ -90,7 +95,7 @@ $sizes: (
 }
 
 // 响应式尺寸
-@each $breakpoint in map-keys($grid-breakpoints) {
+@each $breakpoint in map.keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 

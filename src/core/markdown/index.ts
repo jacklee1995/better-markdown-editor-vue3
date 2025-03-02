@@ -50,8 +50,7 @@ export { MarkdownParser } from './MarkdownParser'
  * Markdown 渲染器组件
  * 将 Markdown 文本渲染为 HTML,并显示在页面上
  */
-import MarkdownRenderer from './MarkdownRenderer'
-export { MarkdownRenderer }
+export { default as MarkdownRenderer } from './MarkdownRenderer'
 
 /**
  * Markdown 词法分析器

@@ -1,8 +1,10 @@
+@use '../variables' as *;
+
 // 背景颜色工具类
 
 // 背景颜色
 @each $color, $value in $colors {
-  .bg-#{$color} {
+  .bg-#{"" + $color} {
     background-color: $value !important;
   }
 }

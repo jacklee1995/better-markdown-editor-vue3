@@ -1,5 +1,7 @@
 // src/styles/themes/light.scss
 
+@use 'sass:map';
+
 // 亮色主题变量
 $theme-light: (
   // 背景色
@@ -49,139 +51,139 @@ $theme-light: (
 .theme-light {
   // 背景色
   .bg-color {
-    background-color: map-get($theme-light, bg-color);
+    background-color: map.get($theme-light, bg-color);
   }
   .bg-color-light {
-    background-color: map-get($theme-light, bg-color-light);
+    background-color: map.get($theme-light, bg-color-light);
   }
   .bg-color-lighter {
-    background-color: map-get($theme-light, bg-color-lighter);
+    background-color: map.get($theme-light, bg-color-lighter);
   }
 
   // 文本颜色
   .text-color {
-    color: map-get($theme-light, text-color);
+    color: map.get($theme-light, text-color);
   }
   .text-color-light {
-    color: map-get($theme-light, text-color-light);
+    color: map.get($theme-light, text-color-light);
   }
   .text-color-lighter {
-    color: map-get($theme-light, text-color-lighter);
+    color: map.get($theme-light, text-color-lighter);
   }
 
   // 边框颜色
   .border-color {
-    border-color: map-get($theme-light, border-color);
+    border-color: map.get($theme-light, border-color);
   }
   .border-color-light {
-    border-color: map-get($theme-light, border-color-light);
+    border-color: map.get($theme-light, border-color-light);
   }
   .border-color-lighter {
-    border-color: map-get($theme-light, border-color-lighter);
+    border-color: map.get($theme-light, border-color-lighter);
   }
 
   // 阴影颜色
   .shadow {
-    box-shadow: 0 2px 12px 0 map-get($theme-light, shadow-color);
+    box-shadow: 0 2px 12px 0 map.get($theme-light, shadow-color);
   }
 
   // 主色调
   .primary-color {
-    color: map-get($theme-light, primary-color);
+    color: map.get($theme-light, primary-color);
   }
   .primary-color-light {
-    color: map-get($theme-light, primary-color-light);
+    color: map.get($theme-light, primary-color-light);
   }
   .primary-color-lighter {
-    color: map-get($theme-light, primary-color-lighter);
+    color: map.get($theme-light, primary-color-lighter);
   }
   .bg-primary-color {
-    background-color: map-get($theme-light, primary-color);
+    background-color: map.get($theme-light, primary-color);
   }
   .bg-primary-color-light {
-    background-color: map-get($theme-light, primary-color-light);
+    background-color: map.get($theme-light, primary-color-light);
   }
   .bg-primary-color-lighter {
-    background-color: map-get($theme-light, primary-color-lighter);
+    background-color: map.get($theme-light, primary-color-lighter);
   }
 
   // 成功色调
   .success-color {
-    color: map-get($theme-light, success-color);
+    color: map.get($theme-light, success-color);
   }
   .success-color-light {
-    color: map-get($theme-light, success-color-light);
+    color: map.get($theme-light, success-color-light);
   }
   .success-color-lighter {
-    color: map-get($theme-light, success-color-lighter);
+    color: map.get($theme-light, success-color-lighter);
   }
   .bg-success-color {
-    background-color: map-get($theme-light, success-color);
+    background-color: map.get($theme-light, success-color);
   }
   .bg-success-color-light {
-    background-color: map-get($theme-light, success-color-light);
+    background-color: map.get($theme-light, success-color-light);
   }
   .bg-success-color-lighter {
-    background-color: map-get($theme-light, success-color-lighter);
+    background-color: map.get($theme-light, success-color-lighter);
   }
 
   // 警告色调
   .warning-color {
-    color: map-get($theme-light, warning-color);
+    color: map.get($theme-light, warning-color);
   }
   .warning-color-light {
-    color: map-get($theme-light, warning-color-light);
+    color: map.get($theme-light, warning-color-light);
   }
   .warning-color-lighter {
-    color: map-get($theme-light, warning-color-lighter);
+    color: map.get($theme-light, warning-color-lighter);
   }
   .bg-warning-color {
-    background-color: map-get($theme-light, warning-color);
+    background-color: map.get($theme-light, warning-color);
   }
   .bg-warning-color-light {
-    background-color: map-get($theme-light, warning-color-light);
+    background-color: map.get($theme-light, warning-color-light);
   }
   .bg-warning-color-lighter {
-    background-color: map-get($theme-light, warning-color-lighter);
+    background-color: map.get($theme-light, warning-color-lighter);
   }
 
   // 危险色调
   .danger-color {
-    color: map-get($theme-light, danger-color);
+    color: map.get($theme-light, danger-color);
   }
   .danger-color-light {
-    color: map-get($theme-light, danger-color-light);
+    color: map.get($theme-light, danger-color-light);
   }
   .danger-color-lighter {
-    color: map-get($theme-light, danger-color-lighter);
+    color: map.get($theme-light, danger-color-lighter);
   }
   .bg-danger-color {
-    background-color: map-get($theme-light, danger-color);
+    background-color: map.get($theme-light, danger-color);
   }
   .bg-danger-color-light {
-    background-color: map-get($theme-light, danger-color-light);
+    background-color: map.get($theme-light, danger-color-light);
   }
   .bg-danger-color-lighter {
-    background-color: map-get($theme-light, danger-color-lighter);
+    background-color: map.get($theme-light, danger-color-lighter);
   }
 
   // 信息色调
   .info-color {
-    color: map-get($theme-light, info-color);
+    color: map.get($theme-light, info-color);
   }
   .info-color-light {
-    color: map-get($theme-light, info-color-light);
+    color: map.get($theme-light, info-color-light);
   }
   .info-color-lighter {
-    color: map-get($theme-light, info-color-lighter);
+    color: map.get($theme-light, info-color-lighter);
   }
   .bg-info-color {
-    background-color: map-get($theme-light, info-color);
+    background-color: map.get($theme-light, info-color);
   }
   .bg-info-color-light {
-    background-color: map-get($theme-light, info-color-light);
+    background-color: map.get($theme-light, info-color-light);
   }
   .bg-info-color-lighter {
-    background-color: map-get($theme-light, info-color-lighter);
+    background-color: map.get($theme-light, info-color-lighter);
   }
 }

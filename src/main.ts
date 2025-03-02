@@ -8,7 +8,7 @@ import routes from '@/router/routes'
 import { useEditorStore, useThemeStore, usePluginStore } from '@/store'
 import { loadPlugins } from './core/plugin'
 import { setTheme } from './core/theme'
-import './assets/styles/main.css'
+import './styles/index.scss'
 
 async function bootstrap() {
   // 创建 Vue 应用实例

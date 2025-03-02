@@ -1,4 +1,8 @@
 @use 'sass:map';
+@use 'sass:color';
+
+// 声明全局变量
+$theme-map: null;
 
 // 主题配置
 $themes: (
@@ -128,8 +132,8 @@ $themes: (
       color: #fff;
 
       &:hover {
-        background-color: darken(themed('primary-color'), 10%);
-        border-color: darken(themed('primary-color'), 10%);
+        background-color: color.adjust(themed('primary-color'), $lightness: -10%);
+        border-color: color.adjust(themed('primary-color'), $lightness: -10%);
       }
     }
 
@@ -140,8 +144,8 @@ $themes: (
       color: #fff;
 
       &:hover {
-        background-color: darken(themed('secondary-color'), 10%);
-        border-color: darken(themed('secondary-color'), 10%);
+        background-color: color.adjust(themed('secondary-color'), $lightness: -10%);
+        border-color: color.adjust(themed('secondary-color'), $lightness: -10%);
       }
     }
 
@@ -152,8 +156,8 @@ $themes: (
       color: #fff;
 
       &:hover {
-        background-color: darken(themed('success-color'), 10%);
-        border-color: darken(themed('success-color'), 10%);
+        background-color: color.adjust(themed('success-color'), $lightness: -10%);
+        border-color: color.adjust(themed('success-color'), $lightness: -10%);
       }
     }
 
@@ -164,8 +168,8 @@ $themes: (
       color: #fff;
 
       &:hover {
-        background-color: darken(themed('warning-color'), 10%);
-        border-color: darken(themed('warning-color'), 10%);
+        background-color: color.adjust(themed('warning-color'), $lightness: -10%);
+        border-color: color.adjust(themed('warning-color'), $lightness: -10%);
       }
     }
 
@@ -176,8 +180,8 @@ $themes: (
       color: #fff;
 
       &:hover {
-        background-color: darken(themed('danger-color'), 10%);
-        border-color: darken(themed('danger-color'), 10%);
+        background-color: color.adjust(themed('danger-color'), $lightness: -10%);
+        border-color: color.adjust(themed('danger-color'), $lightness: -10%);
       }
     }
 
@@ -188,8 +192,8 @@ $themes: (
       color: #fff;
 
       &:hover {
-        background-color: darken(themed('info-color'), 10%);
-        border-color: darken(themed('info-color'), 10%);
+        background-color: color.adjust(themed('info-color'), $lightness: -10%);
+        border-color: color.adjust(themed('info-color'), $lightness: -10%);
       }
     }
   }

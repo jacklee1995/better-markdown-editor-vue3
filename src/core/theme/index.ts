@@ -36,6 +36,11 @@ Email: 291148484@163.com
  *
  * @module
  */
+
+// Import BaseTheme for use within this module
+import { BaseTheme } from './BaseTheme'
+import { ThemeProxy } from './ThemeProxy'
+
 /**
  * 主题基类
  * 定义了主题的基本属性和方法

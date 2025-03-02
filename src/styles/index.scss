@@ -1,35 +1,39 @@
 // src/styles/index.scss
 
-// 导入变量和函数
-@import 'variables';
-@import 'functions';
+// 使用 @use 替代 @import
+@use 'sass:map';
+@use 'sass:meta';
+@use 'variables' as *;
+@use 'functions' as *;
+@use 'mixins' as *;
+@use 'reset' as *;
 
-// 导入混合宏
-@import 'mixins';
+// 布局样式
+@use 'layouts/layout' as *;
+@use 'layouts/header' as *;
+@use 'layouts/main' as *;
+@use 'layouts/footer' as *;
+@use 'layouts/grid' as *;
 
-// 导入基础样式
-@import 'reset';
+// 组件
+@use 'components/menu' as *;
+@use 'components/tabs' as *;
+@use 'components/table' as *;
+@use 'components/preview' as *;
 
-// 导入布局样式
-@import 'layouts/layout';
-@import 'layouts/header';
-@import 'layouts/main';
-@import 'layouts/footer';
-@import 'layouts/grid';
+// 工具类样式
+@use 'utilities/background' as *;
+@use 'utilities/display' as *;
+@use 'utilities/flex' as *;
+@use 'utilities/position' as *;
+@use 'utilities/shadow' as *;
+@use 'utilities/size' as *;
+@use 'utilities/spacing' as *;
 
-// 导入工具类样式
-@import 'utilities/background';
-@import 'utilities/display';
-@import 'utilities/flex';
-@import 'utilities/position';
-@import 'utilities/shadow';
-@import 'utilities/size';
-@import 'utilities/spacing';
-
-// 导入主题样式
-@import 'themes/theme';
-@import 'themes/light';
-@import 'themes/dark';
+// 主题样式
+@use 'themes/theme' as *;
+@use 'themes/light' as *;
+@use 'themes/dark' as *;
 
 // 根元素样式
 :root {
@@ -43,7 +47,7 @@
 
   // 颜色
   @each $color, $value in $colors {
-    --#{$color}: #{$value};
+    --#{if(meta.type-of($color) == 'color', '"" + #{$color}', $color)}: #{$value};
   }
 
   // z-index
@@ -55,6 +59,19 @@
   @each $key, $value in $breakpoints {
     --breakpoint-#{$key}: #{$value};
   }
+
+  // 滚动条颜色
+  --scrollbar-thumb-bg-color: #{$scrollbar-thumb-bg-color};
+  --scrollbar-thumb-hover-bg-color: #{$scrollbar-thumb-hover-bg-color};
+  --scrollbar-track-bg-color: #{$scrollbar-track-bg-color};
+
+  // 选中文本颜色
+  --selection-text-color: #{$selection-text-color};
+  --selection-bg-color: #{$selection-bg-color};
+
+  // 主题颜色
+  --text-color: #333;
+  --bg-color: #fff;
 }
 
 // 基础样式

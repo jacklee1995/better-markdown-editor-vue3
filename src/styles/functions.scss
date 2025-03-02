@@ -1,114 +1,123 @@
+@use 'sass:map';
+
+// 断点相关函数
+// 获取断点前缀
+@function breakpoint-infix($breakpoint, $breakpoints) {
+  $min: map.get($breakpoints, $breakpoint);
+  @return if($min == 0, "", "-#{$breakpoint}");
+}
+
 // 颜色函数
 @function color($key) {
-  @return map-get($colors, $key);
+  @return map.get($colors, $key);
 }
 
 // 获取主题颜色
 @function theme-color($key) {
-  @return map-get($theme-colors, $key);
+  @return map.get($theme-colors, $key);
 }
 
 // 获取灰度颜色
 @function gray-color($key) {
-  @return map-get($grays, $key);
+  @return map.get($grays, $key);
 }
 
 // 获取字体大小
 @function font-size($key) {
-  @return map-get($font-sizes, $key);
+  @return map.get($font-sizes, $key);
 }
 
 // 获取字重
 @function font-weight($key) {
-  @return map-get($font-weights, $key);
+  @return map.get($font-weights, $key);
 }
 
 // 获取行高
 @function line-height($key) {
-  @return map-get($line-heights, $key);
+  @return map.get($line-heights, $key);
 }
 
 // 获取圆角大小
 @function radius($key) {
-  @return map-get($radius, $key);
+  @return map.get($radius, $key);
 }
 
 // 获取间距大小
 @function spacing($key) {
-  @return map-get($spacers, $key);
+  @return map.get($spacers, $key);
 }
 
 // 获取z-index值
 @function z-index($key) {
-  @return map-get($z-indexes, $key);
+  @return map.get($z-indexes, $key);
 }
 
 // 获取阴影
 @function shadow($key) {
-  @return map-get($shadows, $key);
+  @return map.get($shadows, $key);
 }
 
 // 获取断点
 @function breakpoint($key) {
-  @return map-get($breakpoints, $key);
+  @return map.get($breakpoints, $key);
 }
 
 // 获取动画时长
 @function duration($key) {
-  @return map-get($durations, $key);
+  @return map.get($durations, $key);
 }
 
 // 获取动画时间函数
 @function timing-function($key) {
-  @return map-get($timing-functions, $key);
+  @return map.get($timing-functions, $key);
 }
 
 // 获取不透明度
 @function opacity($key) {
-  @return map-get($opacities, $key);
+  @return map.get($opacities, $key);
 }
 
 // 获取边框
 @function border($key) {
-  @return map-get($borders, $key);
+  @return map.get($borders, $key);
 }
 
 // 获取图标
 @function icon($key) {
-  @return map-get($icons, $key);
+  @return map.get($icons, $key);
 }
 
 // 获取形状
 @function shape($key) {
-  @return map-get($shapes, $key);
+  @return map.get($shapes, $key);
 }
 
 // 获取栅格列数
 @function columns($key) {
-  @return map-get($columns, $key);
+  @return map.get($columns, $key);
 }
 
 // 获取层级
 @function layer($key) {
-  @return map-get($layers, $key);
+  @return map.get($layers, $key);
 }
 
 // 获取过渡属性
 @function transition-property($key) {
-  @return map-get($transition-properties, $key);
+  @return map.get($transition-properties, $key);
 }
 
 // 获取过渡时长
 @function transition-duration($key) {
-  @return map-get($transition-durations, $key);
+  @return map.get($transition-durations, $key);
 }
 
 // 获取过渡时间函数
 @function transition-timing-function($key) {
-  @return map-get($transition-timing-functions, $key);
+  @return map.get($transition-timing-functions, $key);
 }
 
 // 获取过渡延迟
 @function transition-delay($key) {
-  @return map-get($transition-delays, $key);
+  @return map.get($transition-delays, $key);
 }
